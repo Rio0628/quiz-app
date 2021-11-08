@@ -1,5 +1,5 @@
 import React from 'react';
-import IndQuizView from './IndQuizView';
+import IndQuiz from './IndQuiz';
 
 const MainQuizView = () => {
     return (
@@ -7,8 +7,8 @@ const MainQuizView = () => {
           <h2 className='quizzesHeading'>Quizzes</h2>
           
           <div className='indQuizCntr'>
-            <IndQuizView />
-            <IndQuizView />
+            <IndQuiz />
+            <IndQuiz />
           </div>
         </div>
     );

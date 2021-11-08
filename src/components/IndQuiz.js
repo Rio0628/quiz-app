@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IndQuizView = () => {
+const IndQuiz = () => {
     return (
         <div className='indQuizView'>
             <p className='quizName'>Quiz Name</p>
@@ -13,4 +13,4 @@ const IndQuizView = () => {
     )
 }
 
-export default IndQuizView;
+export default IndQuiz;

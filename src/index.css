@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Poppins:wght@400;500;600&family=Red+Hat+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Poppins:wght@400;500;600&family=Red+Hat+Mono:wght@400;500;600;800&display=swap');
 
 body {
   margin: 0;
@@ -88,7 +88,7 @@ body {
   background: none;
 }
 
-/* -- MAIN QUIZ VIEW STYLES -- */
+/* -- MAIN / SAVED QUIZ VIEW STYLES -- */
 
 .mainQuizzesView {
   outline: 1px solid black;
@@ -110,19 +110,14 @@ body {
   background: transparent;
 }
 
-/* .mainQuizzesView::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #e2dfdf;
-} */
-
 .quizzesHeading {
   position: relative;
-  width: 234px;
+  width: 280px;
   height: 48px;
-  left: 43px;
-  bottom: 2px;
+  left: 19px;
+  bottom: 5px;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 800;
   font-size: 25px;
   text-align: center;
   /* text-transform: uppercase; */
@@ -132,7 +127,7 @@ body {
 }
 
 
-.indQuizCntr {
+.indQuizCntr, .savedQuizzesCntr {
   position: relative;
   bottom: 30px;
   height: 530px;
@@ -245,3 +240,5 @@ color: #000000;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, .25);
   transition: .125s all;
 }
+
+
