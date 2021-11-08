@@ -8,6 +8,7 @@ const MainQuizView = () => {
           
           <div className='indQuizCntr'>
             <IndQuizView />
+            <IndQuizView />
           </div>
         </div>
     );

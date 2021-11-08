@@ -7,10 +7,8 @@ const IndQuizView = () => {
             <p className='quizQuestions'>Questions: 10</p>
             <p className='creatorName'>Creator Name</p>
 
-            <ul className='save-startBtns'>
-                <li className='saveBtn'>Save</li>
-                <li className='startBtn'>Start Quiz</li>
-            </ul>
+            <div className='saveBtn'>Save</div>
+            <div className='startBtn'>Start Quiz</div>
         </div>
     )
 }
