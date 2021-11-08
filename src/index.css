@@ -2,10 +2,98 @@
 
 body {
   margin: 0;
+  font-family: 'Red Hat Mono';
 }
 
 .container {
+  margin: 2rem;
   outline: 1px solid red;
   max-width: 320px;
   max-height: 650px;
 }
+
+/* -- MAIN NAV-BAR STYLES --  */
+
+.main-nav-bar {
+  position: relative;
+  width: 320px;
+  height: 60.54px;
+  display: flex;
+  background: linear-gradient(180deg, #2A48A2 0%, #2784B9 100%);
+}
+
+.menuBtn {
+  position: relative;
+  left: 6.25%;
+  right: 88.02%;
+  top: 32.99%;
+  width: 18.33px;
+  height: 22px;
+  bottom: 38.88%;
+  color: #FFFFFF;
+}
+
+.searchBtn {
+  position: relative;
+  left: 85.81%;
+  right: 10.31%;
+  top: 31.38%;
+  bottom: 32.28%;
+  height: 25px;
+  width: 18.33px;
+  color: #ffffff;
+}
+
+.searchbarContainer {
+  position: absolute;
+  left: 20.94%;
+  right: 8.75%;
+  top: 29.73%;
+  bottom: 28.97%;
+  display: flex;
+  background: #FBF9FF;
+  mix-blend-mode: normal;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.searchbarContainer .searchBtn {
+  position: absolute;
+  left: 85.33%;
+  right: 9.55%;
+  top: -7%;
+  bottom: 26.55%;
+  width: 30px;
+  padding: 2px;
+  /* background: red; */
+  color: black;
+  cursor: pointer;
+}
+
+.searchbarContainer .searchBtn:hover {
+  background: #e2dfdf;
+}
+
+.searchbar { 
+  position: absolute;
+  left: 2%;
+  top: 19%;
+  font-size: 100%;
+  height: 15px;
+  width: 80%;
+  outline: none;
+  border: none;  
+}
+
+
+
+/*    <div className='main-nav-bar'>
+          < AiOutlineMenu className='menuBtn' />
+          < AiOutlineSearch className='searchBtn' />
+
+          <div className='searchbarContainer '>
+            <input type='text' placeholder='Search Quiz...' />
+            < AiOutlineSearch className='searchBtn'/> 
+          </div>
+        </div>
+         */
