@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
+import MainQuizView from './components/MainQuizView';
 
 export default class App extends Component {
   render () {
@@ -15,6 +16,8 @@ export default class App extends Component {
           </div>
         </div>
         
+        <MainQuizView />
+
       </div>
     );
   }

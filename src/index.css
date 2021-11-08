@@ -26,7 +26,7 @@ body {
   position: relative;
   left: 6.25%;
   right: 88.02%;
-  top: 32.99%;
+  top: 35.99%;
   width: 18.33px;
   height: 22px;
   bottom: 38.88%;
@@ -35,21 +35,21 @@ body {
 
 .searchBtn {
   position: relative;
-  left: 85.81%;
+  left: 76.11%;
   right: 10.31%;
-  top: 31.38%;
+  top: 34.38%;
   bottom: 32.28%;
   height: 25px;
-  width: 18.33px;
-  color: #ffffff;
+  width: 28px;
+  color: #fbf9ff;
 }
 
 .searchbarContainer {
   position: absolute;
   left: 20.94%;
   right: 8.75%;
-  top: 29.73%;
-  bottom: 28.97%;
+  top: 33.73%;
+  bottom: 25.97%;
   display: flex;
   background: #FBF9FF;
   mix-blend-mode: normal;
@@ -83,6 +83,7 @@ body {
   width: 80%;
   outline: none;
   border: none;  
+  background: none;
 }
 
 
