@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import CurrentQuizView from './components/CurrentQuizView';
+import ResultsQuizView from './components/ResultsQuizView';
 import MainQuizView from './components/MainQuizView';
 import SavedQuizzesView from './components/SavedQuizzesView';
 
@@ -22,7 +23,8 @@ export default class App extends Component {
           </div> */}
         </div>
 
-        <CurrentQuizView />
+        <ResultsQuizView />
+        {/* <CurrentQuizView /> */}
         {/* <SavedQuizzesView /> */}
         {/* <MainQuizView /> */}
    

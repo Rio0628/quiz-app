@@ -337,7 +337,7 @@ color: #000000;
 
 /* -- CURRENT QUIZ VIEW */
 
-.quizView {
+.quizView, .resultsQuizCntr{
   outline: 1px solid black;
   height: 590px;
 }
@@ -529,12 +529,117 @@ color: #000000;
   /* outline: 1px solid black; */
 }
 
-/*  lassName='indQuestionCntr'>
-            <p className='questionHeading'>Question #</p>
-            <p className='questionDesc'>This is the question itself</p>
+/* -- QUIZ RESULTS STYLES -- */
 
-            <div className='indChoice'>A: This is one Choice</div>
-            <div className='indChoice'>B: This is one Choice</div>
-            <div className='indChoice'>C: This is one Choice</div>
-            <div className='indChoice'>D: This is one Choice</div>
-        </div>*/
+.resultsQuizCntr {
+  position: relative;
+  /* bottom: 2px; */
+}
+
+.resultsHeading {
+  position: absolute;
+  width: 234px;
+  height: 48px;
+  left: 14%;
+  top: -2.5%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 33px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  /* outline: 1px solid black; */
+}
+
+.quizNameHeading {
+  position: absolute;
+  width: 187px;
+  height: 27px;
+  left: 20%;
+  top: 6%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  /* outline: 1px solid black; */
+}
+
+.resultHeading {
+  position: absolute;
+  width: 120px;
+  height: 14px;
+  left: 12%;
+  top: 13%;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  /* outline: 1px solid black; */
+}
+
+.percentHeading {
+  position: absolute;
+  width: 120px;
+  height: 14px;
+  left: 56%;
+  top: 13%;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  /* outline: 1px solid black; */
+}
+
+.resultsQuizCntr .questionsCntr {
+  left: 15px;
+  top: 22%;
+}
+
+.resultsQuizCntr .indQuestionCntr {
+  left: 18px;
+}
+
+.returnBtn {
+  position: absolute;
+  width: 96px;
+  height: 25px;
+  left: 19px;
+  top: 503px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.15em;
+  background: #FFFFFF;
+  border: 1px solid #E2DFDF;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.resultsQuizCntr .saveBtn {
+  position: absolute;
+  width: 96px;
+  height: 25px;
+  left: 64%;
+  top: 503px;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 25px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  background: linear-gradient(360deg, #2A48A2 0%, #4593EF 100%);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.resultsQuizCntr .saveBtn:hover {
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+  transition: .125s all;
+}
