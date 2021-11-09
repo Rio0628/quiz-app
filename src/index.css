@@ -335,4 +335,136 @@ color: #000000;
   transition: .125s all;
 }
 
+/* -- CURRENT QUIZ VIEW */
 
+.quizView {
+  outline: 1px solid black;
+  height: 590px;
+}
+
+.questionsCntr {
+  position: relative;
+  width: 290px;
+  height: 36px;
+  left: 12px;
+  top: 18px;
+  display: flex;
+  background: rgba(226, 223, 223, 0.9);
+  border-radius: 20px;
+  overflow: auto;
+}
+
+.questionsCntr::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
+}
+
+.previewQuestion {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  left: 5px;
+  top: 3px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 30px;
+  align-items: center;
+  text-align: center;
+  margin-right: 8px;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+
+.returnBtn {
+  position: absolute;
+  width: 96px;
+  height: 25px;
+  left: 45px;
+  top: 22%;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 25px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.15em;
+  background: #fbf9ff;
+  border: 1px solid #E2DFDF;
+  /* box-sizing: border-box; */
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.submitBtn {
+  position: absolute;
+  width: 96px;
+  height: 25px;
+  left: 230px;
+  top: 22%;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 25px;
+  align-items: center;
+  text-align: center;
+  color: #fbf9ff;
+  letter-spacing: .05em;
+  padding: 1.5px 3px;
+  background: linear-gradient(360deg, #2A48A2 0%, #4593EF 100%);
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.backBtn {
+  position: absolute;
+  width: 97px;
+  height: 25.2px;
+  left: 9%;
+  top: 600px;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 25px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.15em;
+  background: #FFFFFF;
+  border: 1px solid #E2DFDF;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.nextBtn {
+  position: absolute;
+  width: 96px;
+  height: 25px;
+  left: 45%;
+  top: 600px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 25px;
+  align-items: center;
+  text-align: center;
+  color: #fbf9ff;
+  /* letter-spacing: .05em; */
+  padding: 1.25px 3px;
+  background: linear-gradient(360deg, #2A48A2 0%, #4593EF 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.returnBtn:hover, .submitBtn:hover, .backBtn:hover, .nextBtn:hover {
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+  transition: .125s all;
+}
+
+
+/* 
+            <div className='returnBtn'>Return</div>
+            <div className='submitBtn'>Submit Quiz</div>
+
+            <div className='backBtn'>Back</div>
+            <div className='nextBtn'>Next Question</div> */
