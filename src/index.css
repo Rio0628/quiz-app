@@ -14,7 +14,7 @@ body {
   background: #fbf9ff;
 }
 
-/* -- MAIN NAV-BAR STYLES --  */
+/* -- NAV-BAR STYLES --  */
 
 .main-nav-bar {
   position: relative;
@@ -88,10 +88,104 @@ body {
   background: none;
 }
 
+/* create quiz nav-bar */
+
+.createQuizNavHdng {
+  position: absolute;
+  /* left: 5.44%; */
+  right: 12%;
+  top: 9.91%;
+  bottom: 10.8%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 33px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.2em;
+  color: #FBF9FF;
+  /* outline: 1px solid white; */
+}
+
+/* quiz heading nav-bar */
+
+.quizNavHdng {
+  position: relative;
+  left: 3%;
+  bottom: 20%;
+  width: 300px;
+  height: 30px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 28px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.3em;
+  color: #FBF9FF;
+  /* outline: 1px solid gray; */
+}
+
+/* -- SIDBAR STYLES -- */
+
+.sidebar {
+  position: relative;
+  bottom: 90.6%;
+  width: 145px;
+  height: 590px;
+  background: linear-gradient(90deg, #2A48A2 0%, #2784B9 99.99%, rgba(255, 255, 255, 1) 100%);
+  box-shadow: 1px -1px 3px #2a48a2;
+}
+
+.searchQuiz {
+  width: 113px;
+  height: 15px;
+  left: 19px;
+  top: 63px;
+} 
+
+.createQuiz {
+  width: 113px;
+  height: 15px;
+  left: 16px;
+  top: 148px;
+}
+
+.savedQuizzes {
+  width: 120px;
+  height: 28px;
+  left: 12px;
+  top: 235px;
+}
+
+.resultQuizzes {
+  width: 132px;
+  height: 19px;
+  left: 5px;
+  top: 330px;
+}
+
+.sidebar p {
+  position: absolute;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 20px;
+  align-items: center;
+  text-align: center;
+  color: #fbf9ff;
+  cursor: pointer;
+}
+
+.sidebar p:hover {
+  text-decoration: underline;
+}
+
 /* -- MAIN / SAVED QUIZ VIEW STYLES -- */
 
 .mainQuizzesView {
-  outline: 1px solid black;
+  /* outline: 1px solid black; */
   position: relative;
   left: 0%;
   right: 0%;
