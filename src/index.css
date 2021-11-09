@@ -421,7 +421,7 @@ color: #000000;
   width: 97px;
   height: 25.2px;
   left: 9%;
-  top: 600px;
+  top: 580px;
   font-weight: bold;
   font-size: 13px;
   line-height: 25px;
@@ -441,7 +441,7 @@ color: #000000;
   width: 96px;
   height: 25px;
   left: 45%;
-  top: 600px;
+  top: 580px;
   font-weight: bold;
   font-size: 12px;
   line-height: 25px;
@@ -461,10 +461,80 @@ color: #000000;
   transition: .125s all;
 }
 
+/* -- IND QUESTION STYLES -- */
 
-/* 
-            <div className='returnBtn'>Return</div>
-            <div className='submitBtn'>Submit Quiz</div>
+.indQuestionCntr {
+  position: absolute;
+  width: 284px;
+  height: 306px;
+  right: 35%;
+  top: 30%;
+  border: 1px solid #E2DFDF;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-            <div className='backBtn'>Back</div>
-            <div className='nextBtn'>Next Question</div> */
+.questionHeading {
+  position: absolute;
+  width: 177px;
+  height: 27px;
+  left: 33%;
+  top: -8px;
+  font-weight: 600;
+}
+
+.questionDesc {
+  position: absolute;
+  width: 264px;
+  height: 68px;
+  left: 8px;
+  top: 25px;
+  font-style: normal;
+  font-size: 10px;
+  line-height: 13px;
+  letter-spacing: 0.1em;
+  color: #000000;
+  /* outline: 1px solid black; */
+}
+
+.indChoice {
+  position: relative;
+  width: 243px;
+  height: 36px;
+  left: 17px;
+  top: 115px;
+  border: 1px solid #E2DFDF;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+
+.indChoice:hover {
+  box-shadow: 2px 2px 4px #e2dfdf;
+  transition: .15s all;
+}
+
+.indChoice p {
+  position: absolute;
+  width: 213px;
+  height: 24px;
+  left: 7px;
+  top: -6px;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 25px;
+  letter-spacing: 0.1em;
+  color: #000000;
+  /* outline: 1px solid black; */
+}
+
+/*  lassName='indQuestionCntr'>
+            <p className='questionHeading'>Question #</p>
+            <p className='questionDesc'>This is the question itself</p>
+
+            <div className='indChoice'>A: This is one Choice</div>
+            <div className='indChoice'>B: This is one Choice</div>
+            <div className='indChoice'>C: This is one Choice</div>
+            <div className='indChoice'>D: This is one Choice</div>
+        </div>*/

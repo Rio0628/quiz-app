@@ -1,4 +1,5 @@
 import React from 'react';
+import IndQuestion from './IndQuestion';
 
 const CurrentQuizView = () => {
     return (
@@ -13,7 +14,7 @@ const CurrentQuizView = () => {
             <div className='returnBtn'>Return</div>
             <div className='submitBtn'>Submit Quiz</div>
 
-            {/*  Current Question View  */}
+            <IndQuestion />
 
             <div className='backBtn'>Back</div>
             <div className='nextBtn'>Next Question</div>
