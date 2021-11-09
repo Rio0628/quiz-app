@@ -13,6 +13,8 @@ const CreateQuizView = () => {
                 <div className='previewQuestion'>4</div>
             </div>
 
+            <div className='addBtn'>Add Question</div>
+
             <div className='indQuestionCntr'>
                 <p className='questionHeading'>Question #</p>
                 <p className='questionDesc'>This is the question itself</p>
@@ -27,7 +29,7 @@ const CreateQuizView = () => {
             </div>
 
             <div className='createQuizBtn'>Create Quiz</div>
-            <div className='cancelBtn'>Cancel</div>
+            <div className='cancelQzBtn'>Cancel</div>
         </div>
     );
 }
