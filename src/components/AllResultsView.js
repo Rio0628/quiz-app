@@ -3,7 +3,7 @@ import React from 'react';
 const AllResultsView = () => {
     return (
         <div className='allResultsCntr'>
-            <p className='resultsHeading'>Result Quizzes</p>
+            <p className='allResultsHeading'>Result Quizzes</p>
 
             <div className='resultQuizOpened'>
                 <p className='quizName'>Quiz Name</p>
