@@ -722,7 +722,22 @@ color: #000000;
 
 .createQuizCntr .indChoice {
   top: 25%;
+  padding: 0px 10px;
+  line-height: 2;
 }
+
+.createQuizCntr .indChoice input {
+  position: relative;
+  right: 10px;
+  height: 23px;
+  width: 183px;
+  background: none;
+  border: none;
+}
+
+.createQuizCntr .indChoice input:focus {
+  outline: none;
+} 
 
 .cancelBtn {
   position: absolute;

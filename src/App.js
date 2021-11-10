@@ -25,8 +25,8 @@ export default class App extends Component {
           </div> */}
         </div>
 
-        <AllResultsView />
-        {/* <CreateQuizView /> */}
+        {/* <AllResultsView /> */}
+        <CreateQuizView />
         {/* <ResultsQuizView /> */}
         {/* <CurrentQuizView /> */}
         {/* <SavedQuizzesView /> */}

@@ -19,11 +19,12 @@ const CreateQuizView = () => {
                 <p className='questionHeading'>Question #</p>
                 <p className='questionDesc'>This is the question itself</p>
 
-                <div className='indChoice'><p>A: This is one Choice</p></div>
-                <div className='indChoice'><p>B: This is one Choice</p></div>
-                <div className='indChoice'><p>C: This is one Choice</p></div>
-                <div className='indChoice'><p>D: This is one Choice</p></div>
-            
+                <div className='indChoice'>A: <input placeholder='This is one Choice'/></div>
+                <div className='indChoice'>B: <input placeholder='This is one Choice'/></div>
+                <div className='indChoice'>C: <input placeholder='This is one Choice'/></div>
+                <div className='indChoice'>D: <input placeholder='This is one Choice'/></div>
+                
+                
                 <div className='cancelBtn'>Cancel</div>
                 <div className='addQstBtn'>Add Question</div>
             </div>
