@@ -26,11 +26,20 @@ export default class App extends Component {
         </div>
 
         {/* <AllResultsView /> */}
-        <CreateQuizView />
+        {/* <CreateQuizView /> */}
         {/* <ResultsQuizView /> */}
         {/* <CurrentQuizView /> */}
         {/* <SavedQuizzesView /> */}
-        {/* <MainQuizView /> */}
+        <MainQuizView />
+
+        <div className='previewQuizView'>
+          <p className='quizName'>Quiz Name</p>
+          <p className='creatorName'>Creator Name</p>
+          <p className='questionsPreview'>Questions: 10</p>
+        
+          <div className='startQuizBtn'>Start Quiz</div>
+          <div className='cancelPrvBtn'>Cancel</div>
+        </div>
    
         {/* <div className='sidebar'>
           <p className='searchQuiz'>Search Quiz</p>

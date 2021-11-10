@@ -127,6 +127,104 @@ body {
   /* outline: 1px solid gray; */
 }
 
+/* -- PREVIEW QUIZ STYLES -- */
+
+.previewQuizView {
+  position: absolute;
+  width: 290px;
+  height: 300px;
+  left: 9%;
+  right: 4.38%;
+  top: 27.85%;
+  bottom: 29.69%;
+  background: #fbf9ff;
+  border: 1px solid #E2DFDF;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.previewQuizView .quizName {
+  position: absolute;
+  width: 265px;
+  height: 48px;
+  left: 20%;
+  top: 5%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.2em;
+}
+
+.previewQuizView .creatorName {
+  position: absolute;
+  width: 147px;
+  height: 22px;
+  left: 28%;
+  top: 20%;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.previewQuizView .questionsPreview {
+  position: absolute;
+  width: 120px;
+  height: 22px;
+  left: 26%;
+  top: 28%;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.startQuizBtn {
+  position: absolute;
+  width: 257px;
+  height: 25px;
+  left: 17px;
+  top: 145px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #fbf9ff;
+  background: linear-gradient(360deg, #2A48A2 0%, #4593EF 100%);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cancelPrvBtn {
+  position: absolute;
+  width: 257px;
+  height: 25px;
+  left: 17px;
+  top: 190px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  background: #fbf9ff;
+  border: 1px solid #E2DFDF;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.startQuizBtn:hover, .cancelPrvBtn:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: .3s all;
+}
+
 /* -- SIDBAR STYLES -- */
 
 .sidebar {
@@ -291,12 +389,12 @@ color: #000000;
 
 }
 
-.saveBtn {
+.indQuizView .saveBtn {
   position: relative;
   width: 66px;
   height: 25px;
   left: 99px;
-  bottom: 25px;
+  top: 25px;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -307,6 +405,7 @@ color: #000000;
   letter-spacing: 0.05em;
   background: rgba(226, 223, 223, 0.7);
   border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, .25);
   cursor: pointer;
 }
 
@@ -327,17 +426,19 @@ color: #000000;
   color: #fbf9ff;
   background: linear-gradient( #2784B9, rgba(39, 132, 185, .60));
   border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, .25);
   cursor: pointer;
 }
 
 .saveBtn:hover, .startBtn:hover {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, .25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
   transition: .125s all;
 }
 
 /* -- CURRENT QUIZ VIEW */
 
 .quizView, .resultsQuizCntr{
+  position: relative;
   outline: 1px solid black;
   height: 590px;
 }
@@ -380,8 +481,8 @@ color: #000000;
   position: absolute;
   width: 96px;
   height: 25px;
-  left: 45px;
-  top: 22%;
+  left: 5%;
+  top: 12%;
   font-weight: bold;
   font-size: 13px;
   line-height: 25px;
@@ -400,8 +501,8 @@ color: #000000;
   position: absolute;
   width: 96px;
   height: 25px;
-  left: 230px;
-  top: 22%;
+  left: 200px;
+  top: 12%;
   font-weight: bold;
   font-size: 12px;
   line-height: 25px;
@@ -420,8 +521,8 @@ color: #000000;
   position: absolute;
   width: 97px;
   height: 25.2px;
-  left: 9%;
-  top: 580px;
+  left: 5%;
+  top: 480px;
   font-weight: bold;
   font-size: 13px;
   line-height: 25px;
@@ -440,8 +541,8 @@ color: #000000;
   position: absolute;
   width: 96px;
   height: 25px;
-  left: 45%;
-  top: 580px;
+  left: 200px;
+  top: 480px;
   font-weight: bold;
   font-size: 12px;
   line-height: 25px;
@@ -467,8 +568,8 @@ color: #000000;
   position: absolute;
   width: 284px;
   height: 306px;
-  right: 35%;
-  top: 30%;
+  right: 5.5%;
+  top: 22%;
   border: 1px solid #E2DFDF;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -601,25 +702,18 @@ color: #000000;
 
 .resultsQuizCntr .indQuestionCntr {
   left: 18px;
+  top: 30%;
 }
 
-.returnBtn {
+.resultsQuizCntr .returnBtn {
   position: absolute;
   width: 96px;
   height: 25px;
   left: 19px;
   top: 503px;
-  font-weight: 600;
   font-size: 10px;
   line-height: 12px;
-  text-align: center;
-  letter-spacing: 0.15em;
-  background: #FFFFFF;
-  border: 1px solid #E2DFDF;
   box-sizing: border-box;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  cursor: pointer;
 }
 
 .resultsQuizCntr .saveBtn {
@@ -707,7 +801,7 @@ color: #000000;
   cursor: pointer;
 }
 
-.indQuestionCntr {
+.createQuizCntr .indQuestionCntr {
   position: absolute;
   width: 284px;
   height: 305px;
