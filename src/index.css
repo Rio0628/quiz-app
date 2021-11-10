@@ -933,11 +933,12 @@ color: #000000;
 }
 
 .resultQuizOpened {
-  position: absolute;
+  position: relative;
   width: 283px;
   height: 183px;
   left: 8%;
   top: 89px;
+  margin-bottom: 15px;
   border: 1px solid #E2DFDF;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -1039,11 +1040,12 @@ color: #000000;
 }
 
 .resultQuizClosed {
-  position: absolute;
+  position: relative;
   width: 283px;
   height: 84px;
   left: 8%;
-  top: 301px;
+  top: 90px;
+  margin-bottom: 15px;
   border: 1px solid #E2DFDF;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -1080,6 +1082,10 @@ color: #000000;
     right: 30%;
   }
 
+  .allResultsHeading {
+    left: 16%;
+  }
+
   .returnBtn, .backBtn, .resultsQuizCntr .returnBtn {
     left: 21%;
   }
@@ -1104,8 +1110,12 @@ color: #000000;
     left: 1%;
   }
 
-  .nameQuizInput, .creatorNameInput, .addBtn, .createQuizCntr .indQuestionCntr, .createQuizBtn, .cancelQzBtn, .createQuizCntr .questionsCntr, .allResultsCntr .resultsHeading, .resultQuizOpened, .resultQuizClosed {
+  .nameQuizInput, .creatorNameInput, .addBtn, .createQuizCntr .indQuestionCntr, .createQuizBtn, .cancelQzBtn, .createQuizCntr .questionsCntr, .allResultsCntr .resultsHeading {
     left: 18%;
+  }
+
+  .resultQuizClosed, .resultQuizOpened {
+    left: 2%;
   }
 
   .searchBtn {
@@ -1192,7 +1202,7 @@ color: #000000;
     left: 1%;
   }
 
-  .nameQuizInput, .creatorNameInput, .addBtn, .createQuizCntr .indQuestionCntr, .createQuizBtn, .cancelQzBtn, .createQuizCntr .questionsCntr, .allResultsCntr .resultsHeading, .resultQuizOpened, .resultQuizClosed {
+  .nameQuizInput, .creatorNameInput, .addBtn, .createQuizCntr .indQuestionCntr, .createQuizBtn, .cancelQzBtn, .createQuizCntr .questionsCntr, .allResultsCntr .resultsHeading {
     left: 25%;
   }
 
@@ -1206,4 +1216,270 @@ color: #000000;
   .searchBtn {
     left: 85%;
   }
+}
+
+@media only screen and (min-width: 620px) {
+  .menuBtn {
+    position: relative;
+    left: 7.25%;
+    right: 90.02%;
+    width: 25px;
+    height: 25px;
+  }
+  
+  .searchBtn {
+    left: 84.11%;
+    right: 10.31%;
+    top: 31.38%;
+    bottom: 32.28%;
+    height: 32px;
+  }
+  
+  .mainQuizzesView, .quizView, .resultsQuizCntr, .allResultsCntr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 700px;
+  }
+
+  .quizzesHeading, .resultsHeading, .allResultsHeading{
+    font-size: 35px;
+  }
+
+  .allResultsHeading { 
+    left: 19%;
+    width: 400px; 
+  }
+
+  .resultsHeading {
+    left: 35%;
+  }
+
+  .resultHeading, .percentHeading {
+    font-size: 18px;
+    width: 180px;
+  }
+
+  .resultQuizOpened {
+    width: 330px;
+    height: 210px; 
+  }
+
+  .indQuizView, .resultQuizClosed {
+    width: 330px;
+    height: 150px;
+  }
+
+  .indQuizView .saveBtn {
+    left: 25%;
+    top: 37%;
+    width: 90px;
+    font-size: 15px;
+    padding: 2px;
+  }
+  .startBtn {
+    left: 59%;
+    top: 75%;
+    width: 120px;
+    height: 25px;
+    font-size: 15px;
+    padding: 2px; 
+    /* height: px; */
+  }
+
+  .allResultsCntr .quizQuestions {
+    left: 63%;
+  }
+
+  .allResultsCntr .resultsQuiz {
+    top: 20%;
+    font-size: 14px;
+    width: 150px;
+  }
+
+  .resultQuizOpened .resultsQuiz { top: 12%; }
+  
+  .qstDropdown {
+    top: 27%;
+  }
+
+  .allResultsCntr .questionDesc {
+    top: 30%;
+    height: 52px; 
+    /* outline: 1px solid red;  */
+  }
+
+  .rightChoice, .userChoice {
+    width: 280px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 1.8;
+    top: 65%;
+  }
+
+  .userChoice {
+    top: 82%; 
+  }
+
+  .resultQuizClosed .quizQuestions {
+    top: 22%;
+  }
+
+  .quizName .quizNameHeading, .allResultsCntr .quizName {
+    font-size: 21px;
+  }
+
+  .quizNameHeading {
+    left: 38%;
+  }
+
+  .creatorName, .quizQuestions { 
+    font-size: 15px; 
+    width: 120px
+  }
+
+  .creatorName {
+    top: 6%;
+    left: 63%;
+  }
+
+  .quizQuestions {
+    top: 20%;
+    left: 60%;
+  }
+
+  .questionsCntr {
+    width: 360px;
+    height: 40px;
+    left: 12px;
+    top: 18px;
+    
+  }
+
+  .nameQuizInput, .creatorNameInput {
+    width: 360px;
+    height: 32px;
+    left: 25%; 
+    font-size: 15px;
+  }
+
+  .previewQuestion {
+    width: 35px;
+    height: 35px;
+    min-width: 30px;
+    left: 5px;
+    top: 3px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 35px;
+  }
+
+  .addBtn, .createQuizBtn, .cancelQzBtn {
+    width: 360px;
+    height: 32px;
+    line-height: 1.5;
+  }
+
+  .createQuizBtn {
+    top: 88%;
+  }
+
+  .cancelQzBtn {
+    top: 94%;
+  }
+
+  .cancelBtn, .addQstBtn {
+    width: 110px;
+    height: 33px;
+    top: 86%;
+    left: 5%;
+    font-size: 16px;
+    line-height: 33px;
+  }
+
+  .addQstBtn {
+    left: 62%;
+    width: 115px;
+    font-size: 13px;
+  }
+
+  .returnBtn, .backBtn {
+    width: 110px;
+    height: 33px;
+    left: 26%;
+    font-size: 18px;
+    line-height: 33px;
+  }
+
+  .submitBtn, .nextBtn {
+    width: 120px;
+    height: 33px;
+    font-size: 15px;
+    line-height: 33px;
+    left: 60%;
+  }
+
+  .backBtn, .nextBtn {
+    top: 80%;
+  }
+
+  .resultsQuizCntr .returnBtn, .resultsQuizCntr .saveBtn {
+    width: 110px;
+    height: 33px;
+    top: 90%;
+    left: 62%;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 33px;
+  }
+
+  .resultsQuizCntr .returnBtn {
+    font-size: 14px;
+    line-height: 16px;
+    left: 23%;
+  }
+
+  .indQuestionCntr, .createQuizCntr .indQuestionCntr {
+    width: 350px;
+    height: 380px;
+    right: -2%;
+  }
+
+  .createQuizCntr .indQuestionCntr {
+    left: 26%;
+  }
+
+  .questionHeading {
+    font-size: 22px;
+    left: 31%;
+    top: -10px;
+  }
+
+  .questionDesc {
+    width: 310px;
+    height: 80px;
+    top: 35px;
+    font-size: 13px;
+    /* outline: 1px solid black; */
+  }
+
+  .indChoice {
+    top: 130px;
+    width: 280px;
+    height: 45px;
+  }
+
+  .createQuizCntr .indChoice { line-height: 2.7; }
+
+  .indChoice p, .indChoice input {
+    font-size: 14px;
+  }
+
+  /*
+
+         ame='indQuestionCntr'>
+            <p className='questionHeading'>Question #</p>
+            <p className='questionDesc'>This is the question itself</p>
+
+            <div className='indChoice'> */
 }

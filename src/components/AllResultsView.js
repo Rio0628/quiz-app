@@ -29,6 +29,13 @@ const AllResultsView = () => {
                 <p className='creatorName'>Creator Name</p>
                 <p className='quizQuestions'>Question: 10</p>
             </div>
+            <div className='resultQuizClosed'>
+                <p className='quizName'>Quiz Name</p>
+                <p className='resultsQuiz'>Results: 9/10</p>
+                <p className='creatorName'>Creator Name</p>
+                <p className='quizQuestions'>Question: 10</p>
+            </div>
+            
         </div>
     );
 }
