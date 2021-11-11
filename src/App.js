@@ -36,12 +36,35 @@ export default class App extends Component {
       console.log(e.target);
 
       if (e.target.className === 'searchQuiz') { 
+        this.setState({ isSidebarActive: false });
+        this.setState({ createQuizViewOn: false });
+        this.setState({ savedQzsViewOn: false });
+        this.setState({ quizResultsViewOn: false});
         this.setState({ mainQuizViewOn: true }); 
       }
 
       if (e.target.className === 'createQuiz') {
+        this.setState({ isSidebarActive: false });
         this.setState({ mainQuizViewOn: false });
+        this.setState({ savedQzsViewOn: false });
+        this.setState({ quizResultsViewOn: false});
         this.setState({ createQuizViewOn: true })
+      }
+
+      if (e.target.className === 'savedQuizzes') {
+        this.setState({ isSidebarActive: false });
+        this.setState({ mainQuizViewOn: false })
+        this.setState({ createQuizViewOn: false });
+        this.setState({ quizResultsViewOn: false});
+        this.setState({ savedQzsViewOn: true });
+      }
+
+      if (e.target.className === 'resultQuizzes') {
+        this.setState({ isSidebarActive: false });
+        this.setState({ mainQuizViewOn: false })
+        this.setState({ createQuizViewOn: false });
+        this.setState({ savedQzsViewOn: false });
+        this.setState({ quizResultsViewOn: true});
       }
 
       if (e.target.className === 'startBtn' || e.target.className === 'startQuizBtn' || e.target.className === 'cancelPrvBtn') {
@@ -66,11 +89,11 @@ export default class App extends Component {
           </div>
         </div>
 
-        {/* <AllResultsView  onClick={handleClick} /> */}
+        {this.state.quizResultsViewOn ? <AllResultsView  onClick={handleClick} /> : null}
         {this.state.createQuizViewOn ?  <CreateQuizView  onClick={handleClick} /> : null}
         {/* <ResultsQuizView onClick={handleClick}/> */}
         {/* <CurrentQuizView onClick={handleClick}/> */}
-        {/* <SavedQuizzesView onClick={handleClick}/> */}
+        {this.state.savedQzsViewOn ? <SavedQuizzesView onClick={handleClick}/>  : null}
         {this.state.mainQuizViewOn ? <MainQuizView onClick={handleClick}/> : null}
         
 
