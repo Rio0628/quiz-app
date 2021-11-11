@@ -14,25 +14,25 @@ export default class App extends Component {
       <div className="container">
         <div className='main-nav-bar'>
           < AiOutlineMenu className='menuBtn' />
-          < AiOutlineSearch className='searchBtn' />
+          {/* < AiOutlineSearch className='searchBtn' /> */}
           
           {/* <p className='createQuizNavHdng'>Create Quiz</p> */}
           {/* <p className='quizNavHdng'>Quiz Name</p> */}
 
-          {/* <div className='searchbarContainer '>
+          <div className='searchbarContainer '>
             <input className='searchbar' type='text' placeholder='Search Quiz...' />
             < AiOutlineSearch className='searchBtn'/> 
-          </div> */}
+          </div>
         </div>
 
         {/* <AllResultsView /> */}
         {/* <CreateQuizView  /> */}
-        <ResultsQuizView />
+        {/* <ResultsQuizView /> */}
         {/* <CurrentQuizView /> */}
         {/* <SavedQuizzesView /> */}
-        {/* <MainQuizView /> */}
+        <MainQuizView />
 
-        {/* <div className='previewQuizView'>
+        <div className='previewQuizView'>
           <p className='quizName'>Quiz Name</p>
           <p className='creatorName'>Creator Name</p>
           <p className='questionsPreview'>Questions: 10</p>
@@ -40,7 +40,7 @@ export default class App extends Component {
           <div className='startQuizBtn'>Start Quiz</div>
           <div className='cancelPrvBtn'>Cancel</div>
         </div>
-    */}
+   
         {/* <div className='sidebar'>
           <p className='searchQuiz'>Search Quiz</p>
           <p className='createQuiz'>Create Quiz</p>
