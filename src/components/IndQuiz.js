@@ -1,14 +1,14 @@
 import React from 'react';
 
-const IndQuiz = () => {
+const IndQuiz = (props) => {
     return (
         <div className='indQuizView'>
             <p className='quizName'>Quiz Name</p>
             <p className='quizQuestions'>Questions: 10</p>
             <p className='creatorName'>Creator Name</p>
 
-            <div className='saveBtn'>Save</div>
-            <div className='startBtn'>Start Quiz</div>
+            <div className='saveBtn' onClick={props.onClick}>Save</div>
+            <div className='startBtn' onClick={props.onClick}>Start Quiz</div>
         </div>
     )
 }

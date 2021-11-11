@@ -8,44 +8,68 @@ import MainQuizView from './components/MainQuizView';
 import SavedQuizzesView from './components/SavedQuizzesView';
 
 export default class App extends Component {
-  render () {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mainQuiz: {},
+    }
+  }
   
+  render () {
+    
+    const handleOnChange = (e) => {
+      console.log(e.target)
+      console.log(e.target.value)
+    }
+
+    const handleClick = (e) => {
+      console.log(e.target);
+
+      if (e.target.className === 'startBtn' || e.target.className === 'startQuizBtn' || e.target.className === 'cancelPrvBtn') {
+        this.setState({ isPreviewOn: !this.state.isPreviewOn });
+      }
+    }
+    
+    console.log(this.state.isPreviewOn)
+
     return (
       <div className="container">
         <div className='main-nav-bar'>
-          < AiOutlineMenu className='menuBtn' />
-          {/* < AiOutlineSearch className='searchBtn' /> */}
+          < AiOutlineMenu className='menuBtn' onClick={handleClick} />
+          {/* < AiOutlineSearch className='searchBtn' onClick={handleClick} /> */}
           
           {/* <p className='createQuizNavHdng'>Create Quiz</p> */}
           {/* <p className='quizNavHdng'>Quiz Name</p> */}
 
           <div className='searchbarContainer '>
-            <input className='searchbar' type='text' placeholder='Search Quiz...' />
-            < AiOutlineSearch className='searchBtn'/> 
+            <input className='searchbar' type='text' placeholder='Search Quiz...' onChange={handleOnChange} />
+            < AiOutlineSearch className='searchBtn' onClick={handleClick}/> 
           </div>
         </div>
 
-        {/* <AllResultsView /> */}
-        {/* <CreateQuizView  /> */}
-        {/* <ResultsQuizView /> */}
-        {/* <CurrentQuizView /> */}
-        {/* <SavedQuizzesView /> */}
-        <MainQuizView />
+        {/* <AllResultsView  onClick={handleClick} /> */}
+        {/* <CreateQuizView  onClick={handleClick} /> */}
+        {/* <ResultsQuizView onClick={handleClick}/> */}
+        {/* <CurrentQuizView onClick={handleClick}/> */}
+        {/* <SavedQuizzesView onClick={handleClick}/> */}
+        <MainQuizView onClick={handleClick}/>
 
-        <div className='previewQuizView'>
-          <p className='quizName'>Quiz Name</p>
-          <p className='creatorName'>Creator Name</p>
-          <p className='questionsPreview'>Questions: 10</p>
+        {this.state.isPreviewOn ?
+          <div className='previewQuizView'>
+            <p className='quizName'>Quiz Name</p>
+            <p className='creatorName'>Creator Name</p>
+            <p className='questionsPreview'>Questions: 10</p>
         
-          <div className='startQuizBtn'>Start Quiz</div>
-          <div className='cancelPrvBtn'>Cancel</div>
+            <div className='startQuizBtn' onClick={handleClick}>Start Quiz</div>
+            <div className='cancelPrvBtn' onClick={handleClick}>Cancel</div>
         </div>
+        : null }
    
         {/* <div className='sidebar'>
-          <p className='searchQuiz'>Search Quiz</p>
-          <p className='createQuiz'>Create Quiz</p>
-          <p className='savedQuizzes'>Saved Quizzes</p>
-          <p className='resultQuizzes'>Result Quizzes</p>
+          <p className='searchQuiz' onClick={handleClick}>Search Quiz</p>
+          <p className='createQuiz' onClick={handleClick}>Create Quiz</p>
+          <p className='savedQuizzes' onClick={handleClick}>Saved Quizzes</p>
+          <p className='resultQuizzes' onClick={handleClick}>Result Quizzes</p>
         </div> */}
 
       </div>

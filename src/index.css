@@ -1348,9 +1348,11 @@ color: #000000;
   }
 
   .searchbarContainer .searchBtn {
-    top: -21%;
-    left: 92%;
-    /* width: 80px; */
+    top: -10%;
+    left: 93%;
+    padding: 0px 7px 0px 0px;
+    width: 35px;
+    height: 28px;
   }
 
   .percentHeading {
