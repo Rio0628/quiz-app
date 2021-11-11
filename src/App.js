@@ -70,6 +70,20 @@ export default class App extends Component {
       if (e.target.className === 'startBtn' || e.target.className === 'startQuizBtn' || e.target.className === 'cancelPrvBtn') {
         this.setState({ isPreviewOn: !this.state.isPreviewOn });
       }
+
+      if (e.target.className === 'startQuizBtn') {
+        this.setState({ isSidebarActive: false });
+        this.setState({ mainQuizViewOn: false })
+        this.setState({ createQuizViewOn: false });
+        this.setState({ savedQzsViewOn: false });
+        this.setState({ quizResultsViewOn: false});
+        this.setState({ isQuizOn: true });
+      }
+
+      if (e.target.className === 'submitBtn') {
+        this.setState({ isQuizOn: false });
+        this.setState({ isResultOn: true });
+      }
     }
     
     console.log(this.state.isSidebarActive)
@@ -89,12 +103,14 @@ export default class App extends Component {
           </div>
         </div>
 
-        {this.state.quizResultsViewOn ? <AllResultsView  onClick={handleClick} /> : null}
-        {this.state.createQuizViewOn ?  <CreateQuizView  onClick={handleClick} /> : null}
-        {/* <ResultsQuizView onClick={handleClick}/> */}
-        {/* <CurrentQuizView onClick={handleClick}/> */}
-        {this.state.savedQzsViewOn ? <SavedQuizzesView onClick={handleClick}/>  : null}
         {this.state.mainQuizViewOn ? <MainQuizView onClick={handleClick}/> : null}
+        {this.state.createQuizViewOn ?  <CreateQuizView  onClick={handleClick} /> : null}
+        {this.state.isQuizOn ? <CurrentQuizView onClick={handleClick}/> : null}
+        {this.state.isResultOn ? <ResultsQuizView onClick={handleClick}/> : null}
+
+        {this.state.savedQzsViewOn ? <SavedQuizzesView onClick={handleClick}/>  : null}
+        {this.state.quizResultsViewOn ? <AllResultsView  onClick={handleClick} /> : null}
+       
         
 
         {this.state.isPreviewOn ?
