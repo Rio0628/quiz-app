@@ -22,20 +22,29 @@ export default class App extends Component {
       console.log(e.target.value)
     }
 
+    const turnSidebarOn = () => {
+      if (this.state.isSidebarActive) { return 'active' }
+      else return '';
+    }
+
+    const handleSidebar = () => {
+      this.setState({ isSidebarActive: !this.state.isSidebarActive });
+    }
+
     const handleClick = (e) => {
-      console.log(e.target);
+      console.log(e.target.className);
 
       if (e.target.className === 'startBtn' || e.target.className === 'startQuizBtn' || e.target.className === 'cancelPrvBtn') {
         this.setState({ isPreviewOn: !this.state.isPreviewOn });
       }
     }
     
-    console.log(this.state.isPreviewOn)
+    console.log(this.state.isSidebarActive)
 
     return (
       <div className="container">
         <div className='main-nav-bar'>
-          < AiOutlineMenu className='menuBtn' onClick={handleClick} />
+          < AiOutlineMenu className='menuBtn' onClick={handleSidebar} />
           {/* < AiOutlineSearch className='searchBtn' onClick={handleClick} /> */}
           
           {/* <p className='createQuizNavHdng'>Create Quiz</p> */}
@@ -65,12 +74,12 @@ export default class App extends Component {
         </div>
         : null }
    
-        {/* <div className='sidebar'>
+        <div className={'sidebar ' + turnSidebarOn() }>
           <p className='searchQuiz' onClick={handleClick}>Search Quiz</p>
           <p className='createQuiz' onClick={handleClick}>Create Quiz</p>
           <p className='savedQuizzes' onClick={handleClick}>Saved Quizzes</p>
           <p className='resultQuizzes' onClick={handleClick}>Result Quizzes</p>
-        </div> */}
+        </div>
 
       </div>
     );

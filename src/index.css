@@ -233,6 +233,13 @@ body {
   height: 590px;
   background: linear-gradient(90deg, #2A48A2 0%, #2784B9 99.99%, rgba(255, 255, 255, 1) 100%);
   box-shadow: 1px -1px 3px #2a48a2;
+  left: -300%;
+  transition: .2s ease-in-out; 
+}
+
+.sidebar.active {
+  left: 0;
+  transition: .2s ease-in-out;
 }
 
 .searchQuiz {
