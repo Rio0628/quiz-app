@@ -1593,6 +1593,16 @@ color: #000000;
   } 
 }
 
+@media only screen and (min-width: 700px) {
+    .nameQuizInput {
+      top: 1%;
+    }
+    .creatorNameInput {
+      left: -21.5%;
+      top: 6.5%;
+    }
+}
+
 @media only screen and (min-width: 950px) {
   .menuBtn {
     position: relative;
@@ -1828,19 +1838,20 @@ color: #000000;
 
   .createQuizCntr .questionsCntr {
     top: 12%;
-    left: 30%;
+    left: 33%;
   }
 
   .nameQuizInput, .creatorNameInput {
     width: 400px;
     height: 35px;
-    left: 30%; 
+    left: 33%; 
     font-size: 17px;
+    top: 4%;
   }
 
   .creatorNameInput {
     top: 10.5%;
-    left: -8.5%;
+    left: -4%;
   }
 
   .previewQuestion {
@@ -1859,7 +1870,7 @@ color: #000000;
     height: 35px;
     line-height: 1.7;
     top: 13.5%;
-    left: 30%;
+    left: 33%;
   }
 
   .createQuizBtn {
@@ -1937,7 +1948,7 @@ color: #000000;
   }
 
   .createQuizCntr .indQuestionCntr {
-    left: 27.5%;
+    left: 30.5%;
     top: 15%;
   }
 
@@ -1952,7 +1963,7 @@ color: #000000;
     height: 80px;
     top: 35px;
     font-size: 15px;
-    outline: 1px solid black;
+    /* outline: 1px solid black; */
   }
 
   .indChoice {

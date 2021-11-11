@@ -11,6 +11,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      mainQuizViewOn: true,
       mainQuiz: {},
     }
   }
@@ -32,7 +33,16 @@ export default class App extends Component {
     }
 
     const handleClick = (e) => {
-      console.log(e.target.className);
+      console.log(e.target);
+
+      if (e.target.className === 'searchQuiz') { 
+        this.setState({ mainQuizViewOn: true }); 
+      }
+
+      if (e.target.className === 'createQuiz') {
+        this.setState({ mainQuizViewOn: false });
+        this.setState({ createQuizViewOn: true })
+      }
 
       if (e.target.className === 'startBtn' || e.target.className === 'startQuizBtn' || e.target.className === 'cancelPrvBtn') {
         this.setState({ isPreviewOn: !this.state.isPreviewOn });
@@ -57,11 +67,12 @@ export default class App extends Component {
         </div>
 
         {/* <AllResultsView  onClick={handleClick} /> */}
-        {/* <CreateQuizView  onClick={handleClick} /> */}
+        {this.state.createQuizViewOn ?  <CreateQuizView  onClick={handleClick} /> : null}
         {/* <ResultsQuizView onClick={handleClick}/> */}
         {/* <CurrentQuizView onClick={handleClick}/> */}
         {/* <SavedQuizzesView onClick={handleClick}/> */}
-        <MainQuizView onClick={handleClick}/>
+        {this.state.mainQuizViewOn ? <MainQuizView onClick={handleClick}/> : null}
+        
 
         {this.state.isPreviewOn ?
           <div className='previewQuizView'>
