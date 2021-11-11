@@ -1094,7 +1094,12 @@ color: #000000;
   }
 
   .returnBtn, .backBtn, .resultsQuizCntr .returnBtn {
-    left: 15%;
+    left: -20%;
+    top: 40px;
+  }
+
+  .backBtn {
+    top: 85px;
   }
 
   .submitBtn, .nextBtn {
@@ -1157,46 +1162,51 @@ color: #000000;
   }
 
   .quizNameHeading {
-    top: 7%;
+    top: -8%;
     font-size: 18px;
-    left: 36%;
+    left: .1%;
   }
 
   .questionsCntr {
     left: 0%;
   }
-
-  .resultHeading {
-    left: 27%;
-  }
   
   .percentHeading, .resultHeading {
     font-size: 15px;
     width: 150px;
+    left: 16%;
+    top: -12.5%;
+  }
+
+  .percentHeading {
+    left: -9%;
+    top: -18.8%;
   }
 
   .resultsHeading {
     font-size: 30px;
-    right: 28%;
+    left: 0%;
   }
   
   .allResultsHeading {
-    top: 1%;
+    top: -10px;
+    /* left: 10%; */
+  }
+
+  .backBtn, .resultsQuizCntr .returnBtn, .returnBtn {
+    left: -17%;
+  }
+
+  .resultsQuizCntr .returnBtn {
     left: 25%;
   }
 
-  .returnBtn, .backBtn, .resultsQuizCntr .returnBtn {
-    left: 27%;
-  }
-
-  .returnBtn, .backBtn { left: 25%; }
-
   .submitBtn, .nextBtn {
-    left: 57%;
+    left: 17%;
   }
 
   .resultsQuizCntr .saveBtn {
-    left: 60%; 
+    left: 60%;
   }
 
   .indQuestionCntr {
@@ -1204,7 +1214,7 @@ color: #000000;
   }
 
   .resultsQuizCntr .returnBtn, .resultsQuizCntr .saveBtn {
-    top: 80%;
+    top: 72%;
   }
 
   .resultsQuizCntr .questionsCntr {
@@ -1216,18 +1226,18 @@ color: #000000;
   }
 
   .createQuizCntr .indQuestionCntr {
-    top: 30%;
+    top: 12%;
   }
 
-  .createQuizBtn { top: 76%; }
-  .cancelQzBtn { top: 81%; }
+  .createQuizBtn { top: 14%; }
+  .cancelQzBtn { top: 15.5%; }
 
   .searchBtn {
     left: 85%;
   }
 }
 
-/* @media only screen and (min-width: 620px) {
+@media only screen and (min-width: 620px) {
   .menuBtn {
     position: relative;
     left: 7.25%;
@@ -1388,17 +1398,17 @@ color: #000000;
   }
 
   .createQuizBtn {
-    top: 88%;
+    top: 15%;
   }
 
   .cancelQzBtn {
-    top: 94%;
+    top: 17%;
   }
 
   .cancelBtn, .addQstBtn {
     width: 110px;
     height: 33px;
-    top: 86%;
+    top: 32%;
     left: 5%;
     font-size: 16px;
     line-height: 33px;
@@ -1408,6 +1418,7 @@ color: #000000;
     left: 62%;
     width: 115px;
     font-size: 13px;
+    top: 24%;
   }
 
   .returnBtn, .backBtn {
@@ -1453,7 +1464,7 @@ color: #000000;
   }
 
   .createQuizCntr .indQuestionCntr {
-    left: 26%;
+    left: 25.5%;
   }
 
   .questionHeading {
@@ -1479,5 +1490,5 @@ color: #000000;
 
   .indChoice p, .indChoice input {
     font-size: 14px;
-  } */
-/* } */
+  } 
+}
