@@ -1,7 +1,7 @@
 import React from 'react';
 import IndQuestion from './IndQuestion';
 
-const ResultsQuizView = () => {
+const ResultsQuizView = (props) => {
     return (
         <div className='resultsQuizCntr'>
             <p className='resultsHeading'>Results</p>
@@ -11,16 +11,16 @@ const ResultsQuizView = () => {
             <p className='percentHeading'>Percent: 80%</p>
 
             <div className='questionsCntr'>
-                <div className='previewQuestion'>1</div>
-                <div className='previewQuestion'>2</div>
-                <div className='previewQuestion'>3</div>
-                <div className='previewQuestion'>4</div>
+                <div className='previewQuestion' onClick={props.onClick}>1</div>
+                <div className='previewQuestion' onClick={props.onClick}>2</div>
+                <div className='previewQuestion' onClick={props.onClick}>3</div>
+                <div className='previewQuestion' onClick={props.onClick}>4</div>
             </div>
 
             <IndQuestion />
 
-            <div className='returnBtn'>Return to Main View</div>
-            <div className='saveBtn'>Save Quiz</div>
+            <div className='returnBtn' onClick={props.onClick}>Return to Main View</div>
+            <div className='saveBtn' onClick={props.onClick}>Save Quiz</div>
         </div>
     );
 }

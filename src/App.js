@@ -35,7 +35,7 @@ export default class App extends Component {
     const handleClick = (e) => {
       console.log(e.target);
 
-      if (e.target.className === 'searchQuiz') { 
+      if (e.target.className === 'searchQuiz' || e.target.className === 'returnBtn' || e.target.className === 'cancelQzBtn') { 
         this.setState({ isSidebarActive: false });
         this.setState({ createQuizViewOn: false });
         this.setState({ savedQzsViewOn: false });
@@ -83,6 +83,11 @@ export default class App extends Component {
       if (e.target.className === 'submitBtn') {
         this.setState({ isQuizOn: false });
         this.setState({ isResultOn: true });
+      }
+
+      if (e.target.className === 'returnBtn') {
+        this.setState({ isQuizOn: false });
+        this.setState({ isResultOn: false });
       }
     }
     
