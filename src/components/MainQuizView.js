@@ -13,8 +13,7 @@ const MainQuizView = (props) => {
       <h2 className='quizzesHeading'>Quizzes</h2>
           
       <div className='indQuizCntr'>
-        <IndQuiz onClick={props.onClick}/>
-        <IndQuiz onClick={props.onClick}/>
+        {quizzesCntr}
       </div>
     </div>
   );

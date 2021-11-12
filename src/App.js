@@ -11,11 +11,14 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainQuizViewOn: false,
-      createQuizViewOn: true,
+      mainQuizViewOn: true,
+      createQuizViewOn: false,
       newQuiz: {name: '', creator: '', questions: [] },
       mainQuiz: {},
-      quizzes: [],
+      quizzes: [
+        {name: 'Example 1', creator: 'Creator 1', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D' } ]}, 
+        {name: 'Example 2', creator: 'Creator 2', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D' } ]}
+      ],
       resultsQuizzes: [],
       savedQuizzes: [],
     }
