@@ -11,14 +11,19 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainQuizViewOn: true,
-      createQuizViewOn: false,
+      mainQuizViewOn: false,
+      createQuizViewOn: true,
+      newQuiz: {name: '', creator: '', questions: [] },
       mainQuiz: {},
+      quizzes: [],
+      resultsQuizzes: [],
+      savedQuizzes: [],
     }
   }
   
   render () {
-    
+    let newQuiz = this.state.newQuiz;
+
     const handleOnChange = (e) => {
       console.log(e.target)
       console.log(e.target.value)
@@ -56,14 +61,6 @@ export default class App extends Component {
       this.setState({ isSidebarActive: !this.state.isSidebarActive });
     }
 
-    console.log(this.state.nameQuizInput);
-    console.log(this.state.creatorQuizInput);
-    console.log(this.state.qstDescInput);
-    console.log(this.state.inputChoiceA)
-    console.log(this.state.inputChoiceB)
-    console.log(this.state.inputChoiceC)
-    console.log(this.state.inputChoiceD)
-
     const handleClick = (e) => {
       console.log(e.target);
 
@@ -81,6 +78,41 @@ export default class App extends Component {
         this.setState({ savedQzsViewOn: false });
         this.setState({ quizResultsViewOn: false});
         this.setState({ createQuizViewOn: true })
+
+        this.setState({ addQuestion: true });
+      }
+
+      if (e.target.className === 'addBtn') {
+        this.setState({ addQuestion: true });
+      }
+
+      if (e.target.className === 'addQstBtn') {
+        let qstText, inputA, inputB, inputC, inputD;
+        
+        qstText = this.state.qstDescInput;
+        if (this.state.inputChoiceA) { inputA = this.state.inputChoiceA }
+        if (this.state.inputChoiceA) { inputB = this.state.inputChoiceB }
+        if (this.state.inputChoiceA) { inputC = this.state.inputChoiceC }
+        if (this.state.inputChoiceA) { inputD = this.state.inputChoiceD }
+
+        let question = {question: qstText, choiceA: inputA, choiceB: inputB, choiceC: inputC, choiceD: inputD };
+        newQuiz.questions.push(question);
+        
+        this.setState({ addQuestion: false });
+        alert('Question Added');
+      }
+
+      if (e.target.className === 'createQuizBtn') {
+        newQuiz.name = this.state.nameQuizInput;
+        newQuiz.creator = this.state.creatorQuizInput;
+
+        this.setState(prevState => ({ quizzes: [...prevState.quizzes, newQuiz] }));
+        this.setState(prevState => ({ savedQuizzes: [...prevState.savedQuizzes, newQuiz] }));
+
+        this.setState({ createQuizViewOn: false });
+        this.setState({ mainQuizViewOn: true });
+
+        console.log(newQuiz)
       }
 
       if (e.target.className === 'savedQuizzes') {
@@ -123,6 +155,10 @@ export default class App extends Component {
       }
     }
 
+    console.log(newQuiz);
+    console.log(this.state.quizzes)
+    console.log(this.state.savedQuizzes)
+
     return (
       <div className="container">
         <div className='main-nav-bar'>
@@ -141,8 +177,8 @@ export default class App extends Component {
           
         </div>
 
-        {this.state.mainQuizViewOn ? <MainQuizView onClick={handleClick}/> : null}
-        {this.state.createQuizViewOn ?  <CreateQuizView  onClick={handleClick} onChange={handleOnChange}/> : null}
+        {this.state.mainQuizViewOn ? <MainQuizView quizzes={this.state.quizzes} onClick={handleClick}/> : null}
+        {this.state.createQuizViewOn ?  <CreateQuizView  newQuiz={newQuiz} addQuestion={this.state.addQuestion} onClick={handleClick} onChange={handleOnChange}/> : null}
         {this.state.isQuizOn ? <CurrentQuizView onClick={handleClick}/> : null}
         {this.state.isResultOn ? <ResultsQuizView onClick={handleClick}/> : null}
 

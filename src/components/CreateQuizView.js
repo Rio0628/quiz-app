@@ -1,21 +1,30 @@
 import React from 'react';
 
 const CreateQuizView = (props) => {
+    let previewQstCntr = [];
+
+    const showIndQuestion = () => {
+        if (props.addQuestion) { return 'active' }
+        else return '';
+    };
+    
+    for (let i = 0; i < props.newQuiz.questions.length; i++) {
+        previewQstCntr.push( <div className='previewQuestion' onClick={props.onClick} key={'previewQuestion ' + i}>{i + 1}</div> );
+    }
+    
     return (
         <div className='createQuizCntr'>
             <input className='nameQuizInput' type='text' placeholder='Name of Quiz...' onChange={props.onChange}/>
             <input className='creatorNameInput' type='text' placeholder='Creator Name...' onChange={props.onChange}/>
 
             <div className='questionsCntr'>
-                <div className='previewQuestion' onClick={props.onClick}>1</div>
-                <div className='previewQuestion' onClick={props.onClick}>2</div>
-                <div className='previewQuestion' onClick={props.onClick}>3</div>
-                <div className='previewQuestion' onClick={props.onClick}>4</div>
+                {previewQstCntr}
             </div>
 
             <div className='addBtn' onClick={props.onClick}>Add Question</div>
-
-            <div className='indQuestionCntr'>
+        
+            
+            <div className={'indQuestionCntr ' + showIndQuestion()}>
                 <p className='questionHeading'>Question #</p>
                 <input className='qstDescInput' placeholder='This is the question itself' onChange={props.onChange}/>
 
