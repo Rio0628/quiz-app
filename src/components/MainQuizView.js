@@ -5,7 +5,7 @@ const MainQuizView = (props) => {
   let quizzesCntr = [];
 
   for (let i = 0; i < props.quizzes.length; i++) {
-    quizzesCntr.push( <IndQuiz info={props.quizzes[i]} onClick={props.onClick}/> )
+    quizzesCntr.push( <IndQuiz info={props.quizzes[i]} savedQuizzes={props.savedQuizzes} onClick={props.onClick} key={'IndQUiz ' + i}/> )
   }
   
   return (

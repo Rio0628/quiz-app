@@ -23,6 +23,10 @@ export default class App extends Component {
       savedQuizzes: [],
     }
   }
+
+  componentDidMount () {
+    this.setState(prevState => ({ savedQuizzes: [...prevState.savedQuizzes, this.state.quizzes[1]] }));
+  }
   
   render () {
     let newQuiz = this.state.newQuiz;
@@ -126,6 +130,18 @@ export default class App extends Component {
         this.setState({ savedQzsViewOn: true });
       }
 
+      if (e.target.className === 'saveBtn') {
+        const quiz = this.state.quizzes.filter( quiz => quiz.name === e.target.getAttribute('name') );
+      
+        this.setState(prevState => ({ savedQuizzes: [...prevState.savedQuizzes, quiz[0]] }));
+      }
+
+      if (e.target.className === 'removeBtn') {
+        const savedQuizzes = this.state.savedQuizzes.filter( quiz => quiz.name !== e.target.getAttribute('name') );
+
+        this.setState({ savedQuizzes: savedQuizzes });
+      }
+
       if (e.target.className === 'resultQuizzes') {
         this.setState({ isSidebarActive: false });
         this.setState({ mainQuizViewOn: false })
@@ -180,12 +196,12 @@ export default class App extends Component {
           
         </div>
 
-        {this.state.mainQuizViewOn ? <MainQuizView quizzes={this.state.quizzes} onClick={handleClick}/> : null}
+        {this.state.mainQuizViewOn ? <MainQuizView quizzes={this.state.quizzes} savedQuizzes={this.state.savedQuizzes} onClick={handleClick}/> : null}
         {this.state.createQuizViewOn ?  <CreateQuizView  newQuiz={newQuiz} addQuestion={this.state.addQuestion} onClick={handleClick} onChange={handleOnChange}/> : null}
         {this.state.isQuizOn ? <CurrentQuizView onClick={handleClick}/> : null}
         {this.state.isResultOn ? <ResultsQuizView onClick={handleClick}/> : null}
 
-        {this.state.savedQzsViewOn ? <SavedQuizzesView onClick={handleClick}/>  : null}
+        {this.state.savedQzsViewOn ? <SavedQuizzesView savedQuizzes={this.state.savedQuizzes} onClick={handleClick}/>  : null}
         {this.state.quizResultsViewOn ? <AllResultsView  onClick={handleClick} /> : null}
        
         
