@@ -816,9 +816,20 @@ color: #000000;
   top: 10%;
 }
 
-.createQuizCntr .questionDesc {
-  top: 7%;
-  height: 45px;
+.qstDescInput {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  height: 32px;
+  width: 245px;
+  padding: 2px 5px;
+  outline: 1px solid #e2dfdf;
+  border: none;
+  border-radius: 5px;
+}
+
+.qstDescInput:hover {
+  border: none;
 }
 
 .createQuizCntr .indChoice {
@@ -1478,6 +1489,11 @@ color: #000000;
     font-size: 15px;
   }
 
+  .qstDescInput {
+    top: 13%;
+    width: 310px;
+  }
+
   .previewQuestion {
     width: 35px;
     height: 35px;
@@ -1487,6 +1503,7 @@ color: #000000;
     font-weight: 600;
     font-size: 20px;
     line-height: 35px;
+    cursor: pointer;
   }
 
   .addBtn, .createQuizBtn, .cancelQzBtn {
@@ -1604,6 +1621,15 @@ color: #000000;
       top: 6.5%;
     }
 }
+
+@media  only  screen and (min-width: 820px ) {
+  
+  .creatorNameInput {
+    /* top: 10.5%; */
+    left: -17.2%;
+  }
+}
+
 
 @media only screen and (min-width: 950px) {
   .menuBtn {
@@ -1855,6 +1881,13 @@ color: #000000;
     top: 10.5%;
     left: -4%;
   }
+  
+  .qstDescInput {
+    font-size: 15px;
+    width: 400px;
+    height: 42px;
+    left: 4%;
+  }
 
   .previewQuestion {
     width: 35px;
@@ -1982,5 +2015,21 @@ color: #000000;
 
   .indChoice p, .indChoice input {
     font-size: 15px;
+  }
+}
+
+@media  only  screen and (min-width: 1250px ) {
+  
+  .creatorNameInput {
+    top: 10.5%;
+    left: 2%;
+  }
+}
+
+@media  only  screen and (min-width: 1450px ) {
+  
+  .creatorNameInput {
+    top: 10.5%;
+    left: 6.5%;
   }
 }

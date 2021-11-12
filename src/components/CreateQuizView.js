@@ -3,8 +3,8 @@ import React from 'react';
 const CreateQuizView = (props) => {
     return (
         <div className='createQuizCntr'>
-            <input className='nameQuizInput' type='text' placeholder='Name of Quiz...'/>
-            <input className='creatorNameInput' type='text' placeholder='Creator Name...'/>
+            <input className='nameQuizInput' type='text' placeholder='Name of Quiz...' onChange={props.onChange}/>
+            <input className='creatorNameInput' type='text' placeholder='Creator Name...' onChange={props.onChange}/>
 
             <div className='questionsCntr'>
                 <div className='previewQuestion' onClick={props.onClick}>1</div>
@@ -17,12 +17,12 @@ const CreateQuizView = (props) => {
 
             <div className='indQuestionCntr'>
                 <p className='questionHeading'>Question #</p>
-                <p className='questionDesc'>This is the question itself</p>
+                <input className='qstDescInput' placeholder='This is the question itself' onChange={props.onChange}/>
 
-                <div className='indChoice'>A: <input placeholder='This is one Choice'/></div>
-                <div className='indChoice'>B: <input placeholder='This is one Choice'/></div>
-                <div className='indChoice'>C: <input placeholder='This is one Choice'/></div>
-                <div className='indChoice'>D: <input placeholder='This is one Choice'/></div>
+                <div className='indChoice'>A: <input placeholder='This is one Choice' choice='A' className='choice' onChange={props.onChange}/></div>
+                <div className='indChoice'>B: <input placeholder='This is one Choice' choice='B' className='choice' onChange={props.onChange}/></div>
+                <div className='indChoice'>C: <input placeholder='This is one Choice' choice='C' className='choice' onChange={props.onChange}/></div>
+                <div className='indChoice'>D: <input placeholder='This is one Choice' choice='D' className='choice' onChange={props.onChange}/></div>
                 
                 
                 <div className='cancelBtn' onClick={props.onClick}>Cancel</div>

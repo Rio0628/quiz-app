@@ -12,6 +12,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       mainQuizViewOn: true,
+      createQuizViewOn: false,
       mainQuiz: {},
     }
   }
@@ -21,6 +22,29 @@ export default class App extends Component {
     const handleOnChange = (e) => {
       console.log(e.target)
       console.log(e.target.value)
+
+      if (e.target.className === 'searchbar') {
+        this.setState({ searchInput: e.target.value });
+      }
+
+      if (e.target.className === 'nameQuizInput') {
+        this.setState({ nameQuizInput: e.target.value });
+      }
+
+      if (e.target.className === 'creatorNameInput') {
+        this.setState({ creatorQuizInput: e.target.value });
+      } 
+
+      if (e.target.className === 'qstDescInput') {
+        this.setState({ qstDescInput: e.target.value });
+      }
+
+      if (e.target.className === 'choice') {
+        if (e.target.getAttribute('choice') === 'A') { this.setState({ inputChoiceA: e.target.value }); };
+        if (e.target.getAttribute('choice') === 'B') { this.setState({ inputChoiceB: e.target.value }); };
+        if (e.target.getAttribute('choice') === 'C') { this.setState({ inputChoiceC: e.target.value }); };
+        if (e.target.getAttribute('choice') === 'D') { this.setState({ inputChoiceD: e.target.value }); };
+      }
     }
 
     const turnSidebarOn = () => {
@@ -31,6 +55,14 @@ export default class App extends Component {
     const handleSidebar = () => {
       this.setState({ isSidebarActive: !this.state.isSidebarActive });
     }
+
+    console.log(this.state.nameQuizInput);
+    console.log(this.state.creatorQuizInput);
+    console.log(this.state.qstDescInput);
+    console.log(this.state.inputChoiceA)
+    console.log(this.state.inputChoiceB)
+    console.log(this.state.inputChoiceC)
+    console.log(this.state.inputChoiceD)
 
     const handleClick = (e) => {
       console.log(e.target);
@@ -90,8 +122,6 @@ export default class App extends Component {
         this.setState({ isResultOn: false });
       }
     }
-    
-    console.log(this.state.isSidebarActive)
 
     return (
       <div className="container">
@@ -99,17 +129,20 @@ export default class App extends Component {
           < AiOutlineMenu className='menuBtn' onClick={handleSidebar} />
           {/* < AiOutlineSearch className='searchBtn' onClick={handleClick} /> */}
           
-          {/* <p className='createQuizNavHdng'>Create Quiz</p> */}
+          {this.state.createQuizViewOn ? <p className='createQuizNavHdng'>Create Quiz</p> : null}
           {/* <p className='quizNavHdng'>Quiz Name</p> */}
 
-          <div className='searchbarContainer '>
-            <input className='searchbar' type='text' placeholder='Search Quiz...' onChange={handleOnChange} />
-            < AiOutlineSearch className='searchBtn' onClick={handleClick}/> 
-          </div>
+          {this.state.mainQuizViewOn || this.state.quizResultsViewOn || this.state.savedQzsViewOn ? 
+            <div className='searchbarContainer '>
+              <input className='searchbar' type='text' placeholder='Search Quiz...' onChange={handleOnChange} />
+              < AiOutlineSearch className='searchBtn' onClick={handleClick}/> 
+            </div>
+          : null}
+          
         </div>
 
         {this.state.mainQuizViewOn ? <MainQuizView onClick={handleClick}/> : null}
-        {this.state.createQuizViewOn ?  <CreateQuizView  onClick={handleClick} /> : null}
+        {this.state.createQuizViewOn ?  <CreateQuizView  onClick={handleClick} onChange={handleOnChange}/> : null}
         {this.state.isQuizOn ? <CurrentQuizView onClick={handleClick}/> : null}
         {this.state.isResultOn ? <ResultsQuizView onClick={handleClick}/> : null}
 
