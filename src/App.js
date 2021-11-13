@@ -30,6 +30,7 @@ export default class App extends Component {
   
   render () {
     let newQuiz = this.state.newQuiz;
+    let currentQuizInputs;
 
     const handleOnChange = (e) => {
       console.log(e.target)
@@ -173,6 +174,27 @@ export default class App extends Component {
         const question = this.state.currentQuiz[0].questions[e.target.getAttribute('number') - 1];
         this.setState({ currentQstQuiz: question });
         this.setState({ currentQstNmb: e.target.getAttribute('number') });
+
+        this.setState({ choiceClicked: ''});
+      }
+
+      if (e.target.className === 'backBtn') {
+
+        if (this.state.currentQstNmb > 1) {
+           this.setState({ currentQstNmb: this.state.currentQstNmb - 1})
+          this.setState({ currentQstQuiz: this.state.currentQuiz[0].questions[this.state.currentQstNmb - 2] });
+         
+        }
+        
+      }
+
+      if (e.target.className === 'nextBtn') {
+
+        if (this.state.currentQuiz[0].questions.length !== this.state.currentQstNmb)  { 
+          this.setState({ currentQstQuiz: this.state.currentQuiz[0].questions[this.state.currentQstNmb] });
+          this.setState({ currentQstNmb: this.state.currentQstNmb + 1});
+        }
+       
       }
 
       if (e.target.className === 'indChoice ')  {
@@ -189,6 +211,7 @@ export default class App extends Component {
 
         const question = this.state.currentQuiz[0].questions[0];
         this.setState({ currentQstQuiz: question });
+        this.setState({ currentQstNmb: 1 });
       }
 
       if (e.target.className === 'submitBtn') {
@@ -204,7 +227,7 @@ export default class App extends Component {
 
     // console.log(this.state.currentQuiz[0]);
     // console.log(this.state.currentQstQuiz)
-    // console.log(this.state.currentQstNmb)
+    console.log(this.state.currentQstNmb)
 
     return (
       <div className="container">
