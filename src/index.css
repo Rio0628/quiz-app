@@ -596,7 +596,7 @@ color: #000000;
   position: absolute;
   width: 177px;
   height: 27px;
-  left: 33%;
+  left: 35%;
   top: -8px;
   font-weight: 600;
 }
@@ -845,13 +845,38 @@ color: #000000;
   border: none;
 }
 
-.createQuizCntr .indChoice {
+.iptIndChoice {
+  position: relative;
+  width: 243px;
+  height: 36px;
+  left: 17px;
   top: 25%;
   padding: 0px 10px;
   line-height: 2;
+  border: 1px solid #E2DFDF;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-top: 7px;
+  cursor: pointer;
 }
 
-.createQuizCntr .indChoice input {
+.iptIndChoice:hover {
+  box-shadow: 2px 2px 4px #e2dfdf;
+  transition: .15s all;
+}
+
+.iptIndChoice.rightChoice {
+  position: relative;
+  width: 243px;
+  height: 36px;
+  left: 17px;
+  top: 25%;
+  padding: 0px 10px;
+  line-height: 3;
+  outline: 1px solid #2dd881;
+}
+
+.choice {
   position: relative;
   right: 10px;
   height: 23px;
@@ -860,7 +885,7 @@ color: #000000;
   border: none;
 }
 
-.createQuizCntr .indChoice input:focus {
+.choice:focus {
   outline: none;
 } 
 
@@ -1603,7 +1628,7 @@ color: #000000;
 
   .questionHeading {
     font-size: 22px;
-    left: 31%;
+    left: 35%;
     top: -10px;
   }
 
@@ -1614,15 +1639,18 @@ color: #000000;
     font-size: 13px;
   }
 
-  .indChoice {
+  .indChoice, .iptIndChoice, .iptIndChoice.rightChoice {
     top: 130px;
     width: 280px;
     height: 45px;
   }
 
-  .createQuizCntr .indChoice { line-height: 2.7; }
+  .iptIndChoice, .iptIndChoice.rightChoice { 
+    top: 100px;
+    line-height: 2.7; 
+  }
 
-  .indChoice p, .indChoice input {
+  .indChoice p, .choice {
     font-size: 14px;
   } 
 }
@@ -2004,7 +2032,7 @@ color: #000000;
 
   .questionHeading {
     font-size: 22px;
-    left: 31%;
+    left: 37%;
     top: -10px;
   }
 
@@ -2016,19 +2044,23 @@ color: #000000;
     /* outline: 1px solid black; */
   }
 
-  .indChoice {
+  .indChoice, .iptIndChoice, .iptIndChoice.rightChoice {
     top: 130px;
     width: 370px;
     height: 48px;
+  }
+
+  .iptIndChoice, .iptIndChoice.rightChoice {
+    top: 110px;
   }
 
   .resultsQuizCntr .indChoice p, .quizView .indChoice p {
     width: 330px;
   }
 
-  .createQuizCntr .indChoice { line-height: 2.7; }
+  .choice { line-height: 2.5; }
 
-  .indChoice p, .indChoice input {
+  .indChoice p, .choice {
     font-size: 15px;
   }
 }

@@ -11,13 +11,13 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainQuizViewOn: true,
-      createQuizViewOn: false,
+      mainQuizViewOn: false,
+      createQuizViewOn: true,
       newQuiz: {name: '', creator: '', questions: [] },
       mainQuiz: {},
       quizzes: [
-        {name: 'Example 1', creator: 'Creator 1', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D' } ]}, 
-        {name: 'Example 2', creator: 'Creator 2', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D' } ]}
+        {name: 'Example 1', creator: 'Creator 1', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D', answer: 'choiceB' } ]}, 
+        {name: 'Example 2', creator: 'Creator 2', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D', answer: 'choiceA'} ]}
       ],
       resultsQuizzes: [],
       savedQuizzes: [],
@@ -89,10 +89,18 @@ export default class App extends Component {
         this.setState({ addQuestion: true });
       }
 
+      if (e.target.className === 'cancelBtn') {
+        this.setState({ addQuestion: false });
+      }
+
       if (e.target.className === 'addBtn') {
         this.setState({ addQuestion: true });
       }
 
+      if (e.target.className === 'iptIndChoice ')  {
+        this.setState({ qstRightChoice: e.target.getAttribute('choice') });
+      }
+      
       if (e.target.className === 'addQstBtn') {
         let qstText, inputA, inputB, inputC, inputD;
         
@@ -102,7 +110,7 @@ export default class App extends Component {
         if (this.state.inputChoiceA) { inputC = this.state.inputChoiceC }
         if (this.state.inputChoiceA) { inputD = this.state.inputChoiceD }
 
-        let question = {question: qstText, choiceA: inputA, choiceB: inputB, choiceC: inputC, choiceD: inputD };
+        let question = {question: qstText, choiceA: inputA, choiceB: inputB, choiceC: inputC, choiceD: inputD, answer: this.state.qstRightChoice };
         newQuiz.questions.push(question);
         
         this.setState({ addQuestion: false });
@@ -175,8 +183,7 @@ export default class App extends Component {
     }
 
     console.log(newQuiz);
-    console.log(this.state.quizzes)
-    console.log(this.state.savedQuizzes)
+    console.log(this.state.qstRightChoice);
 
     return (
       <div className="container">
@@ -197,7 +204,7 @@ export default class App extends Component {
         </div>
 
         {this.state.mainQuizViewOn ? <MainQuizView quizzes={this.state.quizzes} savedQuizzes={this.state.savedQuizzes} onClick={handleClick}/> : null}
-        {this.state.createQuizViewOn ?  <CreateQuizView  newQuiz={newQuiz} addQuestion={this.state.addQuestion} onClick={handleClick} onChange={handleOnChange}/> : null}
+        {this.state.createQuizViewOn ?  <CreateQuizView  newQuiz={newQuiz} addQuestion={this.state.addQuestion} nQstChoice={this.state.qstRightChoice} onClick={handleClick} onChange={handleOnChange}/> : null}
         {this.state.isQuizOn ? <CurrentQuizView onClick={handleClick}/> : null}
         {this.state.isResultOn ? <ResultsQuizView onClick={handleClick}/> : null}
 
@@ -228,5 +235,3 @@ export default class App extends Component {
     );
   }
 }
-
-// export default App;
