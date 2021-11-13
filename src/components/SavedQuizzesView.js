@@ -5,7 +5,7 @@ const SavedQuizzesView = (props) => {
     let savedQuizCntr = [];
 
     for (let i = 0; i < props.savedQuizzes.length; i++) {
-        savedQuizCntr.push( <SavedIndQuiz info={props.savedQuizzes[i]} onClick={props.onClick}/> );
+        savedQuizCntr.push( <SavedIndQuiz info={props.savedQuizzes[i]} onClick={props.onClick} key={'savedQuiz ' + i}/> );
     }
     
 

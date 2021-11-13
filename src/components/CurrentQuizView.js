@@ -2,19 +2,23 @@ import React from 'react';
 import IndQuestion from './IndQuestion';
 
 const CurrentQuizView = (props) => {
+    let previewQstnsCntr = [];
+    console.log(props.quiz)
+    
+    for (let i = 0; i < props.quiz.questions.length; i++) {
+        previewQstnsCntr.push( <div className='previewQuestion' id='currentQuizPrvQst' number={i + 1} onClick={props.onClick}>{i + 1}</div> );
+    }
+
     return (
         <div className='quizView'>
             <div className='questionsCntr'>
-                <div className='previewQuestion' onClick={props.onClick}>1</div>
-                <div className='previewQuestion' onClick={props.onClick}>2</div>
-                <div className='previewQuestion' onClick={props.onClick}>3</div>
-                <div className='previewQuestion' onClick={props.onClick}>4</div>
+                {previewQstnsCntr}
             </div>
 
             <div className='returnBtn' onClick={props.onClick}>Return</div>
             <div className='submitBtn' onClick={props.onClick}>Submit Quiz</div>
 
-            <IndQuestion onClick={props.onClick}/>
+            <IndQuestion choiceClk={props.choiceClk} currentQstNmb={props.currentQstNmb} currentQst={props.currentQstQuiz} onClick={props.onClick}/>
 
             <div className='backBtn' onClick={props.onClick}>Back</div>
             <div className='nextBtn' onClick={props.onClick}>Next Question</div>

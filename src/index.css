@@ -596,7 +596,7 @@ color: #000000;
   position: absolute;
   width: 177px;
   height: 27px;
-  left: 35%;
+  left: 32%;
   top: -8px;
   font-weight: 600;
 }
@@ -628,6 +628,11 @@ color: #000000;
   cursor: pointer;
 }
 
+.indChoice.clicked {
+  outline: 3px solid #5555;
+  background: rgba(226, 223, 233, 1);
+}
+
 .indChoice:hover {
   box-shadow: 2px 2px 4px #e2dfdf;
   transition: .15s all;
@@ -644,6 +649,7 @@ color: #000000;
   line-height: 25px;
   letter-spacing: 0.1em;
   color: #000000;
+  pointer-events: none;
   /* outline: 1px solid black; */
 }
 
@@ -1628,7 +1634,7 @@ color: #000000;
 
   .questionHeading {
     font-size: 22px;
-    left: 35%;
+    left: 30%;
     top: -10px;
   }
 
@@ -2032,7 +2038,7 @@ color: #000000;
 
   .questionHeading {
     font-size: 22px;
-    left: 37%;
+    left: 32%;
     top: -10px;
   }
 

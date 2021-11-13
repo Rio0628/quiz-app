@@ -1,15 +1,23 @@
 import React from 'react';
 
-const IndQuestion = () => {
+const IndQuestion = (props) => {
+    
+    console.log(props.currentQst)
+
+    const choiceClkA = () => props.choiceClk === 'A' ? 'clicked' : '';
+    const choiceClkB = () => props.choiceClk === 'B' ? 'clicked' : '';
+    const choiceClkC = () => props.choiceClk === 'C' ? 'clicked' : '';
+    const choiceClkD = () => props.choiceClk === 'D' ? 'clicked' : '';
+
     return (
         <div className='indQuestionCntr'>
-            <p className='questionHeading'>Question #</p>
-            <p className='questionDesc'>This is the question itself</p>
+            <p className='questionHeading'>Question {props.currentQstNmb}</p>
+            <p className='questionDesc'>{props.currentQst.question}</p>
 
-            <div className='indChoice'><p>A: This is one Choice</p></div>
-            <div className='indChoice'><p>B: This is one Choice</p></div>
-            <div className='indChoice'><p>C: This is one Choice</p></div>
-            <div className='indChoice'><p>D: This is one Choice</p></div>
+            <div className={'indChoice ' + choiceClkA()} choice='A' onClick={props.onClick}><p>A: {props.currentQst.choiceA}</p></div>
+            <div className={'indChoice ' + choiceClkB()} choice='B' onClick={props.onClick}><p>B: {props.currentQst.choiceB}</p></div>
+            <div className={'indChoice ' + choiceClkC()} choice='C' onClick={props.onClick}><p>C: {props.currentQst.choiceC}</p></div>
+            <div className={'indChoice ' + choiceClkD()} choice='D' onClick={props.onClick}><p>D: {props.currentQst.choiceD}</p></div>
         </div>
     );
 }

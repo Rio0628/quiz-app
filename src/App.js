@@ -11,12 +11,12 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainQuizViewOn: false,
-      createQuizViewOn: true,
+      mainQuizViewOn: true,
+      createQuizViewOn: false,
       newQuiz: {name: '', creator: '', questions: [] },
-      mainQuiz: {},
+      currentQuiz: {},
       quizzes: [
-        {name: 'Example 1', creator: 'Creator 1', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D', answer: 'choiceB' } ]}, 
+        {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'C' }]}, 
         {name: 'Example 2', creator: 'Creator 2', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D', answer: 'choiceA'} ]}
       ],
       resultsQuizzes: [],
@@ -70,6 +70,7 @@ export default class App extends Component {
 
     const handleClick = (e) => {
       console.log(e.target);
+      console.log(e.target.id)
 
       if (e.target.className === 'searchQuiz' || e.target.className === 'returnBtn' || e.target.className === 'cancelQzBtn') { 
         this.setState({ isSidebarActive: false });
@@ -162,6 +163,22 @@ export default class App extends Component {
         this.setState({ isPreviewOn: !this.state.isPreviewOn });
       }
 
+      if (e.target.className === 'startBtn') {
+        const quiz = this.state.quizzes.filter( quiz => quiz.name === e.target.getAttribute('name'))
+
+        this.setState({ currentQuiz: quiz });
+      }
+
+      if (e.target.id === 'currentQuizPrvQst') {
+        const question = this.state.currentQuiz[0].questions[e.target.getAttribute('number') - 1];
+        this.setState({ currentQstQuiz: question });
+        this.setState({ currentQstNmb: e.target.getAttribute('number') });
+      }
+
+      if (e.target.className === 'indChoice ')  {
+        this.setState({ choiceClicked: e.target.getAttribute('choice') });
+      }
+
       if (e.target.className === 'startQuizBtn') {
         this.setState({ isSidebarActive: false });
         this.setState({ mainQuizViewOn: false })
@@ -169,6 +186,9 @@ export default class App extends Component {
         this.setState({ savedQzsViewOn: false });
         this.setState({ quizResultsViewOn: false});
         this.setState({ isQuizOn: true });
+
+        const question = this.state.currentQuiz[0].questions[0];
+        this.setState({ currentQstQuiz: question });
       }
 
       if (e.target.className === 'submitBtn') {
@@ -182,8 +202,9 @@ export default class App extends Component {
       }
     }
 
-    console.log(newQuiz);
-    console.log(this.state.qstRightChoice);
+    // console.log(this.state.currentQuiz[0]);
+    // console.log(this.state.currentQstQuiz)
+    // console.log(this.state.currentQstNmb)
 
     return (
       <div className="container">
@@ -204,11 +225,15 @@ export default class App extends Component {
         </div>
 
         {this.state.mainQuizViewOn ? <MainQuizView quizzes={this.state.quizzes} savedQuizzes={this.state.savedQuizzes} onClick={handleClick}/> : null}
+
         {this.state.createQuizViewOn ?  <CreateQuizView  newQuiz={newQuiz} addQuestion={this.state.addQuestion} nQstChoice={this.state.qstRightChoice} onClick={handleClick} onChange={handleOnChange}/> : null}
-        {this.state.isQuizOn ? <CurrentQuizView onClick={handleClick}/> : null}
+        
+        {this.state.isQuizOn ? <CurrentQuizView choiceClk={this.state.choiceClicked} currentQstNmb={this.state.currentQstNmb} currentQstQuiz={this.state.currentQstQuiz} quiz={this.state.currentQuiz[0]} onClick={handleClick}/> : null}
+        
         {this.state.isResultOn ? <ResultsQuizView onClick={handleClick}/> : null}
 
         {this.state.savedQzsViewOn ? <SavedQuizzesView savedQuizzes={this.state.savedQuizzes} onClick={handleClick}/>  : null}
+        
         {this.state.quizResultsViewOn ? <AllResultsView  onClick={handleClick} /> : null}
        
         

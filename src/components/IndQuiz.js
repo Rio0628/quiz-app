@@ -14,8 +14,6 @@ const IndQuiz = (props) => {
         if (savedQuiz.length > 0)  return ' saved'
         else return ''
     }
-
-    console.log(quizSaved)
     
     return (
         <div className='indQuizView'>

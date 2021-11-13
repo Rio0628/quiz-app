@@ -2,10 +2,6 @@ import React from 'react';
 
 const SavedIndQuiz = (props) => {
     
-    const checkQuizSaved = () => {
-        
-    }
-    
     return (
         <div className='indQuizView'>
             <p className='quizName'>{props.info.name}</p>
