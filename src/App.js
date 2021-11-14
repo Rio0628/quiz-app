@@ -17,7 +17,7 @@ export default class App extends Component {
       currentQuiz: {},
       currentQuizAnswers: [],
       quizzes: [
-        {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'C' }]}, 
+        {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]}, 
         {name: 'Example 2', creator: 'Creator 2', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D', answer: 'choiceA'} ]}
       ],
       resultsQuizzes: [],
@@ -71,7 +71,7 @@ export default class App extends Component {
 
     const handleClick = async (e) => {
       console.log(e.target);
-      console.log(e.target.id)
+      // console.log(e.target.id)
 
       if (e.target.className === 'searchQuiz' || e.target.className === 'returnBtn' || e.target.className === 'cancelQzBtn') { 
         this.setState({ isSidebarActive: false });
@@ -175,26 +175,51 @@ export default class App extends Component {
         this.setState({ currentQstQuiz: question });
         this.setState({ currentQstNmb: e.target.getAttribute('number') });
 
-        this.setState({ choiceClicked: ''});
+        this.setState({ choiceClicked: '' });
+
+        try {
+          if (this.state.currentQuizAnswers[parseInt(e.target.getAttribute('number')) - 1].answer.length === 1) {
+            this.setState({ choiceClicked: this.state.currentQuizAnswers[parseInt(e.target.getAttribute('number')) - 1].answer});
+          }
+          else { this.setState({ choiceClicked: ' ' }); }
+        } catch(err) { console.log ('No ChoiceCLicked for question') }
       }
 
       if (e.target.className === 'backBtn') {
 
         if (this.state.currentQstNmb > 1) {
-           this.setState({ currentQstNmb: this.state.currentQstNmb - 1})
+          this.setState({ currentQstNmb: this.state.currentQstNmb - 1})
           this.setState({ currentQstQuiz: this.state.currentQuiz[0].questions[this.state.currentQstNmb - 2] });
-         
         }
-        
+
+        this.setState({ choiceClicked: '' });
+        try {
+          if (this.state.currentQuizAnswers[this.state.currentQstNmb - 2].answer.length === 1) {
+            this.setState({ choiceClicked: this.state.currentQuizAnswers[this.state.currentQstNmb - 2].answer});
+          }
+          else { this.setState({ choiceClicked: ' ' }); }
+        } catch(err) { console.log ('No ChoiceCLicked for question') }
       }
 
       if (e.target.className === 'nextBtn') {
         
         if (this.state.currentQuiz[0].questions.length !== this.state.currentQstNmb)  { 
           this.setState({ currentQstQuiz: this.state.currentQuiz[0].questions[this.state.currentQstNmb] });
-          this.setState({ currentQstNmb: parseInt(this.state.currentQstNmb) + 1});
+          await this.setState({ currentQstNmb: parseInt(this.state.currentQstNmb) + 1});
         }
-
+       
+        this.setState({ choiceClicked: '' });
+        
+        try {
+          if (this.state.currentQuizAnswers[this.state.currentQstNmb - 1].answer.length !== 1) {
+            console.log('this ios being tyirggered')
+            this.setState({ choiceClicked: '' });
+          } else { 
+            console.log('this is triggered')
+            this.setState({ choiceClicked: this.state.currentQuizAnswers[this.state.currentQstNmb - 1].answer});
+          }
+        } catch(err) { console.log ('No ChoiceCLicked for question') }
+        
       }
 
       if (e.target.className === 'indChoice ')  {
@@ -222,8 +247,7 @@ export default class App extends Component {
           }
         }
         else { this.setState(prevState => ({ currentQuizAnswers: [...prevState.currentQuizAnswers, this.state.answerQst] })); }
-
-        
+        console.log(this.state.currentQuizAnswers[0].answer.length)
       }
 
       if (e.target.className === 'startQuizBtn') {
@@ -240,8 +264,22 @@ export default class App extends Component {
       }
 
       if (e.target.className === 'submitBtn') {
-        this.setState({ isQuizOn: false });
-        this.setState({ isResultOn: true });
+        let results = [], allResults = [], rightAnswers = 0;
+        const userAnswers = this.state.currentQuizAnswers;
+
+        // this.setState({ isQuizOn: false });
+        // this.setState({ isResultOn: true });
+        
+        // Function to check results 
+        try {
+          for (let i = 0; i < this.state.currentQuiz[0].questions.length; i++) {
+            if (this.state.currentQuiz[0].questions[i].answer === this.state.currentQuizAnswers[i].answer) { rightAnswers += 1; }
+            // console.log(this.state.currentQuizAnswers)
+          }
+        } catch(err) { console.log('All questions not answered') }
+        
+        // console.log(this.state.currentQuizAnswers[0].answer)
+        console.log(rightAnswers)
       }
 
       if (e.target.className === 'returnBtn') {
@@ -250,11 +288,12 @@ export default class App extends Component {
       }
     }
 
-    // console.log(this.state.currentQuiz[0]);
+    
     // console.log(this.state.currentQstQuiz)
-    // console.log(this.state.currentQstNmb)
+    console.log(this.state.currentQstNmb)
+    // console.log(this.state.currentQstNmb - 1)
     // console.log(this.state.answerQst)
-    console.log(this.state.currentQuizAnswers)
+
 
     return (
       <div className="container">
