@@ -16,11 +16,21 @@ export default class App extends Component {
       newQuiz: {name: '', creator: '', questions: [] },
       currentQuiz: {},
       currentQuizAnswers: [],
+      currentQuizResults: {},
       quizzes: [
-        {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]}, 
+        {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming lenguage is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]}, 
         {name: 'Example 2', creator: 'Creator 2', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D', answer: 'choiceA'} ]}
       ],
-      resultsQuizzes: [],
+      resultsQuizzes: [
+        {quiz: {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]},
+        questions: {
+          question: {question: 'What programming lenguage is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' },
+          answer: 'C'
+        },
+        fraction: '1 / 3',
+        percent: .33,
+        },
+      ],
       savedQuizzes: [],
     }
   }
@@ -264,22 +274,37 @@ export default class App extends Component {
       }
 
       if (e.target.className === 'submitBtn') {
-        let results = [], allResults = [], rightAnswers = 0;
-        const userAnswers = this.state.currentQuizAnswers;
+        let results = [], rightAnswers = 0, questionRslt = [];
 
         // this.setState({ isQuizOn: false });
         // this.setState({ isResultOn: true });
         
+        results = {quiz: this.state.currentQuiz[0], questions: [], fraction: '', percent: ''};
+
         // Function to check results 
         try {
           for (let i = 0; i < this.state.currentQuiz[0].questions.length; i++) {
             if (this.state.currentQuiz[0].questions[i].answer === this.state.currentQuizAnswers[i].answer) { rightAnswers += 1; }
-            // console.log(this.state.currentQuizAnswers)
+
+            if (this.state.currentQuiz[0].questions[i].question === this.state.currentQuizAnswers[i].question) {
+              questionRslt = {question: this.state.currentQuiz[0].questions[i], userChoice: this.state.currentQuizAnswers[i].answer}
+              results.questions.push(questionRslt);
+              // console.log(questionRslt)
+            }
+            // console.log(this.state.currentQuizAnswers[i])
           }
         } catch(err) { console.log('All questions not answered') }
         
+        const fraction = `${rightAnswers} / ${this.state.currentQuiz[0].questions.length}`
+        const percent = Math.round( (rightAnswers / this.state.currentQuiz[0].questions.length) * 100) / 100;
+
+        results.fraction = fraction;
+        results.percent = percent;
         // console.log(this.state.currentQuizAnswers[0].answer)
-        console.log(rightAnswers)
+        console.log(results)
+        
+        this.setState({ currentQuizResults: results });
+        this.setState(prevState => ({ resultsQuizzes: [...prevState.resultsQuizzes, results]} ));
       }
 
       if (e.target.className === 'returnBtn') {
@@ -289,8 +314,9 @@ export default class App extends Component {
     }
 
     
-    // console.log(this.state.currentQstQuiz)
-    console.log(this.state.currentQstNmb)
+  console.log(this.state.resultsQuizzes)
+  console.log(this.state.currentQuizResults)
+    // console.log(this.state.currentQstNmb)
     // console.log(this.state.currentQstNmb - 1)
     // console.log(this.state.answerQst)
 
