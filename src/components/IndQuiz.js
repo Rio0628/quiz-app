@@ -1,7 +1,7 @@
 import React from 'react';
 
 const IndQuiz = (props) => {
-    let quizSaved = false;
+    // let quizSaved = false;
     
     const checkQuizSaved = () => {
         const savedQuiz = props.savedQuizzes.filter( quiz => quiz.name === props.info.name);

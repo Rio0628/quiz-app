@@ -2,7 +2,7 @@ import React from 'react';
 
 const IndQuestion = (props) => {
     
-    console.log(props.currentQst)
+    // console.log(props.currentQst)
 
     const choiceClkA = () => props.choiceClk === 'A' ? 'clicked' : '';
     const choiceClkB = () => props.choiceClk === 'B' ? 'clicked' : '';

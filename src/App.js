@@ -15,6 +15,7 @@ export default class App extends Component {
       createQuizViewOn: false,
       newQuiz: {name: '', creator: '', questions: [] },
       currentQuiz: {},
+      currentQuizAnswers: [],
       quizzes: [
         {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'C' }]}, 
         {name: 'Example 2', creator: 'Creator 2', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D', answer: 'choiceA'} ]}
@@ -30,7 +31,6 @@ export default class App extends Component {
   
   render () {
     let newQuiz = this.state.newQuiz;
-    let currentQuizInputs;
 
     const handleOnChange = (e) => {
       console.log(e.target)
@@ -69,7 +69,7 @@ export default class App extends Component {
       this.setState({ isSidebarActive: !this.state.isSidebarActive });
     }
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
       console.log(e.target);
       console.log(e.target.id)
 
@@ -189,16 +189,41 @@ export default class App extends Component {
       }
 
       if (e.target.className === 'nextBtn') {
-
+        
         if (this.state.currentQuiz[0].questions.length !== this.state.currentQstNmb)  { 
           this.setState({ currentQstQuiz: this.state.currentQuiz[0].questions[this.state.currentQstNmb] });
-          this.setState({ currentQstNmb: this.state.currentQstNmb + 1});
+          this.setState({ currentQstNmb: parseInt(this.state.currentQstNmb) + 1});
         }
-       
+
       }
 
       if (e.target.className === 'indChoice ')  {
         this.setState({ choiceClicked: e.target.getAttribute('choice') });
+
+        const answerQst = {question: this.state.currentQstQuiz.question, answer: e.target.getAttribute('choice')}
+        await this.setState({ answerQst: answerQst });
+
+        const currentQuizAnswers = this.state.currentQuizAnswers;
+        
+        if (currentQuizAnswers.length > 0 ) {
+          const question = currentQuizAnswers.filter( indQst => indQst.question === this.state.answerQst.question);
+          
+         
+          if (question.length > 0) {
+            for (let i = 0; i < currentQuizAnswers.length; i++) {
+              if (currentQuizAnswers[i].question === this.state.answerQst.question) {
+                currentQuizAnswers[i] = this.state.answerQst;
+              }
+            }
+            this.setState({ currentQuizAnswers: currentQuizAnswers });
+          }
+          else {
+            this.setState(prevState => ({ currentQuizAnswers: [...prevState.currentQuizAnswers, this.state.answerQst] }));
+          }
+        }
+        else { this.setState(prevState => ({ currentQuizAnswers: [...prevState.currentQuizAnswers, this.state.answerQst] })); }
+
+        
       }
 
       if (e.target.className === 'startQuizBtn') {
@@ -227,7 +252,9 @@ export default class App extends Component {
 
     // console.log(this.state.currentQuiz[0]);
     // console.log(this.state.currentQstQuiz)
-    console.log(this.state.currentQstNmb)
+    // console.log(this.state.currentQstNmb)
+    // console.log(this.state.answerQst)
+    console.log(this.state.currentQuizAnswers)
 
     return (
       <div className="container">
@@ -259,8 +286,6 @@ export default class App extends Component {
         
         {this.state.quizResultsViewOn ? <AllResultsView  onClick={handleClick} /> : null}
        
-        
-
         {this.state.isPreviewOn ?
           <div className='previewQuizView'>
             <p className='quizName'>Quiz Name</p>
