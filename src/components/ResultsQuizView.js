@@ -5,10 +5,10 @@ const ResultsQuizView = (props) => {
     return (
         <div className='resultsQuizCntr'>
             <p className='resultsHeading'>Results</p>
-            <p className='quizNameHeading'>Quiz Name</p>
+            <p className='quizNameHeading'>{props.info.quiz.name}</p>
 
-            <p className='resultHeading'>Results: 8/10</p>
-            <p className='percentHeading'>Percent: 80%</p>
+            <p className='resultHeading'>Results: {props.info.fraction}</p>
+            <p className='percentHeading'>Percent: {props.info.percent}%</p>
 
             <div className='questionsCntr'>
                 <div className='previewQuestion' onClick={props.onClick}>1</div>
@@ -17,7 +17,7 @@ const ResultsQuizView = (props) => {
                 <div className='previewQuestion' onClick={props.onClick}>4</div>
             </div>
 
-            <IndQuestion />
+            {/* <IndQuestion /> */}
 
             <div className='returnBtn' onClick={props.onClick}>Return to Main View</div>
             <div className='saveBtn' onClick={props.onClick}>Save Quiz</div>

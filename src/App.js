@@ -274,12 +274,8 @@ export default class App extends Component {
       }
 
       if (e.target.className === 'submitBtn') {
-        let results = [], rightAnswers = 0, questionRslt = [];
-
-        // this.setState({ isQuizOn: false });
-        // this.setState({ isResultOn: true });
-        
-        results = {quiz: this.state.currentQuiz[0], questions: [], fraction: '', percent: ''};
+        let rightAnswers = 0, questionRslt = [];
+        let results = {quiz: this.state.currentQuiz[0], questions: [], fraction: '', percent: ''};
 
         // Function to check results 
         try {
@@ -295,8 +291,8 @@ export default class App extends Component {
           }
         } catch(err) { console.log('All questions not answered') }
         
-        const fraction = `${rightAnswers} / ${this.state.currentQuiz[0].questions.length}`
-        const percent = Math.round( (rightAnswers / this.state.currentQuiz[0].questions.length) * 100) / 100;
+        const fraction = `${rightAnswers}/${this.state.currentQuiz[0].questions.length}`
+        const percent = Math.round( (rightAnswers / this.state.currentQuiz[0].questions.length) * 100);
 
         results.fraction = fraction;
         results.percent = percent;
@@ -305,6 +301,9 @@ export default class App extends Component {
         
         this.setState({ currentQuizResults: results });
         this.setState(prevState => ({ resultsQuizzes: [...prevState.resultsQuizzes, results]} ));
+
+        this.setState({ isQuizOn: false });
+        this.setState({ isResultOn: true });
       }
 
       if (e.target.className === 'returnBtn') {
@@ -345,7 +344,7 @@ export default class App extends Component {
         
         {this.state.isQuizOn ? <CurrentQuizView choiceClk={this.state.choiceClicked} currentQstNmb={this.state.currentQstNmb} currentQstQuiz={this.state.currentQstQuiz} quiz={this.state.currentQuiz[0]} onClick={handleClick}/> : null}
         
-        {this.state.isResultOn ? <ResultsQuizView onClick={handleClick}/> : null}
+        {this.state.isResultOn ? <ResultsQuizView info={this.state.currentQuizResults} onClick={handleClick}/> : null}
 
         {this.state.savedQzsViewOn ? <SavedQuizzesView savedQuizzes={this.state.savedQuizzes} onClick={handleClick}/>  : null}
         
@@ -353,9 +352,9 @@ export default class App extends Component {
        
         {this.state.isPreviewOn ?
           <div className='previewQuizView'>
-            <p className='quizName'>Quiz Name</p>
-            <p className='creatorName'>Creator Name</p>
-            <p className='questionsPreview'>Questions: 10</p>
+            <p className='quizName'>{this.state.currentQuiz[0].name}</p>
+            <p className='creatorName'>{this.state.currentQuiz[0].creator}</p>
+            <p className='questionsPreview'>Questions: {this.state.currentQuiz[0].questions.length}</p>
         
             <div className='startQuizBtn' onClick={handleClick}>Start Quiz</div>
             <div className='cancelPrvBtn' onClick={handleClick}>Cancel</div>
