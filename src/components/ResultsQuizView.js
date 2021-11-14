@@ -2,6 +2,26 @@ import React from 'react';
 import IndQuestion from './IndQuestion';
 
 const ResultsQuizView = (props) => {
+    let previewQstCntr = [];
+
+    for (let i = 0; i < props.info.quiz.questions.length; i++) {
+        
+        const checkIfRight = () => {
+            try {
+                if (props.info.quiz.questions[i].answer === props.info.questions[i].userChoice) {
+                    return 'correct';
+                }
+                else return 'incorrect';
+            } catch(err) { 
+                return 'incorrect';
+                console.log('No Anwer Found') 
+            }
+            
+        }
+        
+        previewQstCntr.push(<div className='previewQuestion' id={checkIfRight()} onClick={props.onClick} key={'preview ' + (i + 1)} >{i + 1}</div>)
+    }
+    
     return (
         <div className='resultsQuizCntr'>
             <p className='resultsHeading'>Results</p>
@@ -11,16 +31,13 @@ const ResultsQuizView = (props) => {
             <p className='percentHeading'>Percent: {props.info.percent}%</p>
 
             <div className='questionsCntr'>
-                <div className='previewQuestion' onClick={props.onClick}>1</div>
-                <div className='previewQuestion' onClick={props.onClick}>2</div>
-                <div className='previewQuestion' onClick={props.onClick}>3</div>
-                <div className='previewQuestion' onClick={props.onClick}>4</div>
+               {previewQstCntr}
             </div>
 
             {/* <IndQuestion /> */}
 
             <div className='returnBtn' onClick={props.onClick}>Return to Main View</div>
-            <div className='saveBtn' onClick={props.onClick}>Save Quiz</div>
+            <div className='saveBtn' name={props.info.quiz.name} onClick={props.onClick}>Save Quiz</div>
         </div>
     );
 }

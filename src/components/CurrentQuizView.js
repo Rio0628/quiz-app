@@ -6,7 +6,7 @@ const CurrentQuizView = (props) => {
     // console.log(props.quiz)
     
     for (let i = 0; i < props.quiz.questions.length; i++) {
-        previewQstnsCntr.push( <div className='previewQuestion' id='currentQuizPrvQst' number={i + 1} onClick={props.onClick}>{i + 1} key={'PreviewQuestion ' + i} </div> );
+        previewQstnsCntr.push( <div className='previewQuestion' id='currentQuizPrvQst' number={i + 1} onClick={props.onClick} key={'PreviewQuestion ' + i}>{i + 1}  </div> );
     }
 
     return (
