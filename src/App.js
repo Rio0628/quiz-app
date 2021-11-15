@@ -11,10 +11,11 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainQuizViewOn: false,
-      quizResultsViewOn: true,
+      mainQuizViewOn: true,
+      quizResultsViewOn: false,
       newQuiz: {name: '', creator: '', questions: [] },
       currentQuiz: {},
+      currentQuizzes: [],
       currentQuizAnswers: [],
       currentQuizResults: {},
       quizzes: [
@@ -28,7 +29,7 @@ export default class App extends Component {
           userChoice: 'C'},
         ],
         fraction: '1/3',
-        percent: .33,
+        percent: 33,
         },
         {quiz: {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]},
         questions: [
@@ -49,6 +50,8 @@ export default class App extends Component {
 
   componentDidMount () {
     this.setState(prevState => ({ savedQuizzes: [...prevState.savedQuizzes, this.state.quizzes[1]] }));
+
+    this.setState({ currentQuizzes: this.state.quizzes });
   }
   
   render () {
@@ -91,6 +94,12 @@ export default class App extends Component {
       this.setState({ isSidebarActive: !this.state.isSidebarActive });
     }
 
+    const handleSearchBtn = () => {
+      const quizzes = this.state.quizzes.filter(quiz => quiz.name.toLowerCase() === this.state.searchInput);
+      this.setState({ currentQuizzes: quizzes });
+  
+    }
+
     const handleClick = async (e) => {
       console.log(e.target);
       // console.log(e.target.id)
@@ -100,7 +109,12 @@ export default class App extends Component {
         this.setState({ createQuizViewOn: false });
         this.setState({ savedQzsViewOn: false });
         this.setState({ quizResultsViewOn: false});
+        this.setState({ isResultOn: false });
         this.setState({ mainQuizViewOn: true }); 
+      }
+
+      if (e.target.className === 'searchQuiz') {
+        this.setState({ currentQuizzes: this.state.quizzes });
       }
 
       if (e.target.className === 'createQuiz') {
@@ -108,6 +122,7 @@ export default class App extends Component {
         this.setState({ mainQuizViewOn: false });
         this.setState({ savedQzsViewOn: false });
         this.setState({ quizResultsViewOn: false});
+        this.setState({ isResultOn: false });
         this.setState({ createQuizViewOn: true })
 
         this.setState({ addQuestion: true });
@@ -159,6 +174,7 @@ export default class App extends Component {
         this.setState({ mainQuizViewOn: false })
         this.setState({ createQuizViewOn: false });
         this.setState({ quizResultsViewOn: false});
+        this.setState({ isResultOn: false });
         this.setState({ savedQzsViewOn: true });
       }
 
@@ -175,19 +191,12 @@ export default class App extends Component {
       }
 
       if (e.target.className === 'resultQuizzes') {
-        let resultsStates = [];
-
-        for (let i = 0; i < this.state.resultsQuizzes.length; i++) {
-          const obj = {name: this.state.resultsQuizzes[i].quiz.name, results: this.state.resultsQuizzes[i].fraction,  isOpen: false}
-          resultsStates.push(obj);
-        }
-  
-        this.setState({ resultsStates: resultsStates });
 
         this.setState({ isSidebarActive: false });
         this.setState({ mainQuizViewOn: false })
         this.setState({ createQuizViewOn: false });
         this.setState({ savedQzsViewOn: false });
+        this.setState({ isResultOn: false });
         this.setState({ quizResultsViewOn: true});
 
       }
@@ -335,7 +344,7 @@ export default class App extends Component {
       if (e.target.className === 'previewQuestion') {
         const question = this.state.currentQuizResults.quiz.questions[e.target.getAttribute('number')];
         this.setState({ currentRsltQst: question });
-        this.setState({ currentRsltQstNmb: e.target.getAttribute('number') });
+        this.setState({ currentRsltQstNmb: e.target.getAttribute('number') + 1});
       }
 
       if (e.target.className === 'returnBtn') {
@@ -365,21 +374,21 @@ export default class App extends Component {
     return (
       <div className="container">
         <div className='main-nav-bar'>
-          < AiOutlineMenu className='menuBtn' onClick={handleSidebar} />
+          {!this.state.isQuizOn ? < AiOutlineMenu className='menuBtn' onClick={handleSidebar} /> : null}
           
           {this.state.createQuizViewOn ? <p className='createQuizNavHdng'>Create Quiz</p> : null}
-          {/* <p className='quizNavHdng'>Quiz Name</p> */}
+          {this.state.isQuizOn ? <p className='quizNavHdng'>{this.state.currentQuiz[0].name}</p> : null}
 
           {this.state.mainQuizViewOn || this.state.quizResultsViewOn || this.state.savedQzsViewOn ? 
             <div className='searchbarContainer '>
               <input className='searchbar' type='text' placeholder='Search Quiz...' onChange={handleOnChange} />
-              < AiOutlineSearch className='searchBtn' onClick={handleClick}/> 
+              < AiOutlineSearch className='searchBtn' onClick={handleSearchBtn}/> 
             </div>
           : null}
           
         </div>
 
-        {this.state.mainQuizViewOn ? <MainQuizView quizzes={this.state.quizzes} savedQuizzes={this.state.savedQuizzes} onClick={handleClick}/> : null}
+        {this.state.mainQuizViewOn ? <MainQuizView quizzes={this.state.currentQuizzes} savedQuizzes={this.state.savedQuizzes} onClick={handleClick}/> : null}
 
         {this.state.createQuizViewOn ?  <CreateQuizView  newQuiz={newQuiz} addQuestion={this.state.addQuestion} nQstChoice={this.state.qstRightChoice} onClick={handleClick} onChange={handleOnChange}/> : null}
         
