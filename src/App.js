@@ -18,13 +18,13 @@ export default class App extends Component {
       currentQuizAnswers: [],
       currentQuizResults: {},
       quizzes: [
-        {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming lenguage is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]}, 
+        {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]}, 
         {name: 'Example 2', creator: 'Creator 2', questions: [{question: 'qstText', choiceA: 'inputA', choiceB: 'inputB', choiceC: 'Choice C', choiceD: 'Choice D', answer: 'choiceA'} ]}
       ],
       resultsQuizzes: [
         {quiz: {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]},
         questions: [
-          {question: {question: 'What programming lenguage is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' },
+          {question: {question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' },
           userChoice: 'C'},
         ],
         fraction: '1/3',
@@ -32,7 +32,7 @@ export default class App extends Component {
         },
         {quiz: {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]},
         questions: [
-          {question: {question: 'What programming lenguage is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' },
+          {question: {question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' },
           userChoice: 'C'},
           {question: {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' },
           userChoice: 'D'},
@@ -346,18 +346,20 @@ export default class App extends Component {
       if (e.target.className === 'resultQuizClosed') {
         await this.setState({ currentQuizResults: this.state.resultsQuizzes[e.target.getAttribute('number')] });
 
-        const question = this.state.currentQuizResults.quiz.questions[0];
+        const question = await this.state.currentQuizResults.quiz.questions[0];
         await this.setState({ currentRsltQst: question });
 
-        // this.setState({ quizResultsViewOn: false });
-        // this.setState({ isResultOn: true });
-        // this.setState({ currentRsltQstNmb: 0});
+        // console.log(this.state.currentQuizResults.quiz)
+
+        this.setState({ currentRsltQstNmb: 0});
+        this.setState({ quizResultsViewOn: false });
+        this.setState({ isResultOn: true });
+       
       }
     }
 
     
-    // console.log(this.state.resultsQuizzes)
-    console.log(this.state.currentQuizResults)
+    // console.log(this.state.resux
 
 
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ResultsQuizView = (props) => {
-    let previewQstCntr = [], rightChoice, wrongChoice;
+    let previewQstCntr = [], rightChoice, wrongChoice, noInputMsg;
 
     for (let i = 0; i < props.info.quiz.questions.length; i++) {
         
@@ -23,16 +23,20 @@ const ResultsQuizView = (props) => {
         const question = props.info.quiz.questions.filter( qst => qst.question === props.currentQst.question);
         const userAnswer = props.info.questions.filter( qst => qst.question.question === props.currentQst.question);
 
-        console.log(userAnswer[0])
-
-        if (question[0].answer === userAnswer[0].userChoice) {
-            rightChoice = userAnswer[0].userChoice;
+        try {
+            if (question[0].answer === userAnswer[0].userChoice) {
+                    rightChoice = userAnswer[0].userChoice;
+                }
+            else {
+                rightChoice = question[0].answer;
+                wrongChoice = userAnswer[0].userChoice;
+                console.log('incorrect');
+            }
+        } catch(err) { 
+            rightChoice = question[0].answer 
+            noInputMsg = 'No User Answer';
         }
-        else {
-            rightChoice = question[0].answer;
-            wrongChoice = userAnswer[0].userChoice;
-            console.log('incorrect');
-        }
+        
     }
     showAnswers();
 
@@ -42,9 +46,7 @@ const ResultsQuizView = (props) => {
     const choiceD = () => rightChoice === 'D' ? ' correct' : '' || wrongChoice === 'D' ? ' incorrect': '';
 
     // console.log(props.info)
-    console.log(' ')
-    console.log(rightChoice);
-    console.log(wrongChoice);
+
     return (
         <div className='resultsQuizCntr'>
             <p className='resultsHeading'>Results</p>
@@ -65,6 +67,8 @@ const ResultsQuizView = (props) => {
                     <div className={'indChoice ' + choiceB()} choice='B' onClick={props.onClick}><p>B: {props.currentQst.choiceB}</p></div>
                     <div className={'indChoice ' + choiceC()} choice='C' onClick={props.onClick}><p>C: {props.currentQst.choiceC}</p></div>
                     <div className={'indChoice ' + choiceD()} choice='D' onClick={props.onClick}><p>D: {props.currentQst.choiceD}</p></div>
+
+                    {noInputMsg ? <p className='noInputMsg'>{noInputMsg}</p> : null}
             </div>
 
             {/* <IndQuestion /> */}
