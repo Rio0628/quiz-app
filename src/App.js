@@ -11,8 +11,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainQuizViewOn: true,
-      createQuizViewOn: false,
+      mainQuizViewOn: false,
+      quizResultsViewOn: true,
       newQuiz: {name: '', creator: '', questions: [] },
       currentQuiz: {},
       currentQuizAnswers: [],
@@ -23,12 +23,24 @@ export default class App extends Component {
       ],
       resultsQuizzes: [
         {quiz: {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]},
-        questions: {
-          question: {question: 'What programming lenguage is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' },
-          answer: 'C'
-        },
-        fraction: '1 / 3',
+        questions: [
+          {question: {question: 'What programming lenguage is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' },
+          userChoice: 'C'},
+        ],
+        fraction: '1/3',
         percent: .33,
+        },
+        {quiz: {name: 'Test Quiz', creator: 'The Creator', questions: [{question: 'What programming language is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' }, {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' }, {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' }]},
+        questions: [
+          {question: {question: 'What programming lenguage is this done with?', choiceA: 'Java', choiceB: 'Python', choiceC: 'JS / React', choiceD: 'Kotlin', answer: 'C' },
+          userChoice: 'C'},
+          {question: {question: 'What is 9 + 10?', choiceA: '22', choiceB: '20', choiceC: '19', choiceD: '21', answer: 'D' },
+          userChoice: 'D'},
+          {question: {question: 'UwU? ', choiceA: 'Como que UwU?', choiceB: ':v', choiceC: 'Si', choiceD: 'No', answer: 'A' },
+          userChoice: 'A'},
+        ],
+        fraction: '3/3',
+        percent: 100,
         },
       ],
       savedQuizzes: [],
@@ -163,11 +175,21 @@ export default class App extends Component {
       }
 
       if (e.target.className === 'resultQuizzes') {
+        let resultsStates = [];
+
+        for (let i = 0; i < this.state.resultsQuizzes.length; i++) {
+          const obj = {name: this.state.resultsQuizzes[i].quiz.name, results: this.state.resultsQuizzes[i].fraction,  isOpen: false}
+          resultsStates.push(obj);
+        }
+  
+        this.setState({ resultsStates: resultsStates });
+
         this.setState({ isSidebarActive: false });
         this.setState({ mainQuizViewOn: false })
         this.setState({ createQuizViewOn: false });
         this.setState({ savedQzsViewOn: false });
         this.setState({ quizResultsViewOn: true});
+
       }
 
       if (e.target.className === 'startBtn' || e.target.className === 'startQuizBtn' || e.target.className === 'cancelPrvBtn') {
@@ -320,14 +342,22 @@ export default class App extends Component {
         this.setState({ isQuizOn: false });
         this.setState({ isResultOn: false });
       }
+
+      if (e.target.className === 'resultQuizClosed') {
+        await this.setState({ currentQuizResults: this.state.resultsQuizzes[e.target.getAttribute('number')] });
+
+        const question = this.state.currentQuizResults.quiz.questions[0];
+        await this.setState({ currentRsltQst: question });
+
+        // this.setState({ quizResultsViewOn: false });
+        // this.setState({ isResultOn: true });
+        // this.setState({ currentRsltQstNmb: 0});
+      }
     }
 
     
     // console.log(this.state.resultsQuizzes)
-    // console.log(this.state.currentQuizResults)
-    // console.log(this.state.currentRsltQst)
-    // console.log(this.state.currentQstNmb - 1)
-    // console.log(this.state.answerQst)
+    console.log(this.state.currentQuizResults)
 
 
     return (
@@ -357,7 +387,7 @@ export default class App extends Component {
 
         {this.state.savedQzsViewOn ? <SavedQuizzesView savedQuizzes={this.state.savedQuizzes} onClick={handleClick}/>  : null}
         
-        {this.state.quizResultsViewOn ? <AllResultsView  onClick={handleClick} /> : null}
+        {this.state.quizResultsViewOn ? <AllResultsView isResultOpened={'adw'} quizzes={this.state.resultsQuizzes}  onClick={handleClick} /> : null}
        
         {this.state.isPreviewOn ?
           <div className='previewQuizView'>
