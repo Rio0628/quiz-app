@@ -299,11 +299,21 @@ export default class App extends Component {
         // console.log(this.state.currentQuizAnswers[0].answer)
         console.log(results)
         
-        this.setState({ currentQuizResults: results });
+        await this.setState({ currentQuizResults: results });
         this.setState(prevState => ({ resultsQuizzes: [...prevState.resultsQuizzes, results]} ));
 
+        const question = results.quiz.questions[0];
+        await this.setState({ currentRsltQst: question });
+        
         this.setState({ isQuizOn: false });
         this.setState({ isResultOn: true });
+        this.setState({ currentRsltQstNmb: 0});
+      }
+
+      if (e.target.className === 'previewQuestion') {
+        const question = this.state.currentQuizResults.quiz.questions[e.target.getAttribute('number')];
+        this.setState({ currentRsltQst: question });
+        this.setState({ currentRsltQstNmb: e.target.getAttribute('number') });
       }
 
       if (e.target.className === 'returnBtn') {
@@ -313,9 +323,9 @@ export default class App extends Component {
     }
 
     
-  console.log(this.state.resultsQuizzes)
-  console.log(this.state.currentQuizResults)
-    // console.log(this.state.currentQstNmb)
+    // console.log(this.state.resultsQuizzes)
+    // console.log(this.state.currentQuizResults)
+    // console.log(this.state.currentRsltQst)
     // console.log(this.state.currentQstNmb - 1)
     // console.log(this.state.answerQst)
 
@@ -324,7 +334,6 @@ export default class App extends Component {
       <div className="container">
         <div className='main-nav-bar'>
           < AiOutlineMenu className='menuBtn' onClick={handleSidebar} />
-          {/* < AiOutlineSearch className='searchBtn' onClick={handleClick} /> */}
           
           {this.state.createQuizViewOn ? <p className='createQuizNavHdng'>Create Quiz</p> : null}
           {/* <p className='quizNavHdng'>Quiz Name</p> */}
@@ -344,7 +353,7 @@ export default class App extends Component {
         
         {this.state.isQuizOn ? <CurrentQuizView choiceClk={this.state.choiceClicked} currentQstNmb={this.state.currentQstNmb} currentQstQuiz={this.state.currentQstQuiz} quiz={this.state.currentQuiz[0]} onClick={handleClick}/> : null}
         
-        {this.state.isResultOn ? <ResultsQuizView info={this.state.currentQuizResults} onClick={handleClick}/> : null}
+        {this.state.isResultOn ? <ResultsQuizView info={this.state.currentQuizResults} resultQstNmb={this.state.currentRsltQstNmb} currentQst={this.state.currentRsltQst} onClick={handleClick}/> : null}
 
         {this.state.savedQzsViewOn ? <SavedQuizzesView savedQuizzes={this.state.savedQuizzes} onClick={handleClick}/>  : null}
         

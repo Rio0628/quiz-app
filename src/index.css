@@ -643,6 +643,16 @@ color: #000000;
   background: rgba(226, 223, 233, 1);
 }
 
+.indChoice.correct {
+  outline: 3px solid rgba(45, 216, 129, 1);
+  background: rgba(45, 216, 129, .2);
+}
+
+.indChoice.incorrect {
+  outline: 3px solid rgba(255, 0, 33, 1);
+  background: rgba(255, 0, 33, .2);
+}
+
 .indChoice:hover {
   box-shadow: 2px 2px 4px #e2dfdf;
   transition: .15s all;
