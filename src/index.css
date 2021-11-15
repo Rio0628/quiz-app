@@ -6,19 +6,13 @@ body {
 }
 
 .container {
-  /* margin: 2rem; */
-  /* outline: 1px solid red; */
-  /* max-width: 320px;
-  max-height: 650px; */
   height: 650px;
-  /* background: #fbf9ff; */
 }
 
 /* -- NAV-BAR STYLES --  */
 
 .main-nav-bar {
   position: relative;
-  /* width: 320px; */
   height: 60.54px;
   display: flex;
   background: linear-gradient(180deg, #2A48A2 0%, #2784B9 100%);
@@ -32,7 +26,7 @@ body {
   width: 18.33px;
   height: 22px;
   bottom: 38.88%;
-  color: #FFFFFF;
+  color: #fbf9ff;
 }
 
 .searchBtn {
@@ -67,8 +61,6 @@ body {
   bottom: 26.55%;
   width: 30px;
   padding: 2px;
-  /* background: red; */
-  color: black;
   cursor: pointer;
 }
 
@@ -92,11 +84,9 @@ body {
 
 .createQuizNavHdng {
   position: absolute;
-  /* left: 5.44%; */
   right: 12%;
   top: 9.91%;
   bottom: 10.8%;
-  font-style: normal;
   font-weight: bold;
   font-size: 25px;
   line-height: 33px;
@@ -105,7 +95,6 @@ body {
   text-align: center;
   letter-spacing: 0.2em;
   color: #FBF9FF;
-  /* outline: 1px solid white; */
 }
 
 /* quiz heading nav-bar */
@@ -123,7 +112,6 @@ body {
   text-align: center;
   letter-spacing: 0.3em;
   color: #FBF9FF;
-  /* outline: 1px solid gray; */
 }
 
 /* -- PREVIEW QUIZ STYLES -- */
@@ -148,7 +136,6 @@ body {
   height: 48px;
   left: 20%;
   top: 5%;
-  font-style: normal;
   font-weight: bold;
   font-size: 23px;
   line-height: 30px;
@@ -272,7 +259,6 @@ body {
 
 .sidebar p {
   position: absolute;
-  font-style: normal;
   font-weight: bold;
   font-size: 15px;
   line-height: 20px;
@@ -289,17 +275,14 @@ body {
 /* -- MAIN / SAVED QUIZ VIEW STYLES -- */
 
 .mainQuizzesView {
-  /* outline: 1px solid black; */
   position: relative;
   left: 0%;
   right: 0%;
-  /* top: 3.38%; */
   bottom: 0%;
   height: 589px;
   border: 1px solid #E2DFDF;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  /* overflow: hidden; */
   overflow: auto;
 }
 
@@ -314,14 +297,11 @@ body {
   height: 48px;
   left: 19px;
   bottom: 5px;
-  font-style: normal;
   font-weight: 800;
   font-size: 25px;
   text-align: center;
-  /* text-transform: uppercase; */
   letter-spacing: 0.2em;
   color: #000000;
-  /* outline: 1px solid red; */
 }
 
 
@@ -329,7 +309,6 @@ body {
   position: relative;
   bottom: 30px;
   height: 530px;
-  /* outline: 1px solid blue; */
 }
 
  /* -- IND QUIZ VIEW STYLES -- */
@@ -352,15 +331,12 @@ body {
   height: 27px;
   left: 14px;
   bottom: 5px;
-  font-style: normal;
   font-weight: bold;
   font-size: 15px;
   line-height: 20px;
   display: flex;
   align-items: center;
   letter-spacing: 0.1em;
-  
-  color: #000000;
 }
 
 .quizQuestions {
@@ -369,14 +345,11 @@ body {
   height: 9px;
   left: 14px;
   bottom: 18px;
-  font-style: normal;
   font-weight: normal;
   font-size: 10px;
   line-height: 13px;
   display: flex;
   align-items: center;
-  color: #000000;
-
 }
 
 .creatorName {
@@ -385,15 +358,11 @@ body {
   height: 17px;
   left: 12px;
   bottom: 23px;
-  font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
   display: flex;
   align-items: center;
-
-color: #000000;
-
 }
 
 .indQuizView .saveBtn, .removeBtn {
@@ -402,11 +371,9 @@ color: #000000;
   height: 25px;
   left: 99px;
   top: 25px;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 25px;
-  /* display: flex; */
   align-items: center;
   text-align: center;
   letter-spacing: 0.05em;
@@ -427,11 +394,9 @@ color: #000000;
   height: 25px;
   left: 178px;
   top: 82px;
-  font-style: normal;
   font-weight: bold;
   font-size: 12px;
   line-height: 25px;
-  /* display: flex; */
   align-items: center;
   text-align: center;
   letter-spacing: 0.05em;
@@ -518,7 +483,6 @@ color: #000000;
   letter-spacing: 0.15em;
   background: #fbf9ff;
   border: 1px solid #E2DFDF;
-  /* box-sizing: border-box; */
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   cursor: pointer;
@@ -576,7 +540,6 @@ color: #000000;
   align-items: center;
   text-align: center;
   color: #fbf9ff;
-  /* letter-spacing: .05em; */
   padding: 1.25px 3px;
   background: linear-gradient(360deg, #2A48A2 0%, #4593EF 100%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -629,12 +592,9 @@ color: #000000;
   height: 68px;
   left: 8px;
   top: 25px;
-  font-style: normal;
   font-size: 10px;
   line-height: 13px;
   letter-spacing: 0.1em;
-  color: #000000;
-  /* outline: 1px solid black; */
 }
 
 .indChoice {
@@ -682,14 +642,12 @@ color: #000000;
   letter-spacing: 0.1em;
   color: #000000;
   pointer-events: none;
-  /* outline: 1px solid black; */
 }
 
 /* -- QUIZ RESULTS STYLES -- */
 
 .resultsQuizCntr {
   position: relative;
-  /* bottom: 2px; */
 }
 
 .resultsHeading {
@@ -698,13 +656,11 @@ color: #000000;
   height: 48px;
   left: 14%;
   top: -2.5%;
-  font-style: normal;
   font-weight: bold;
   font-size: 25px;
   line-height: 33px;
   text-align: center;
   letter-spacing: 0.2em;
-  /* outline: 1px solid black; */
 }
 
 .quizNameHeading {
@@ -713,13 +669,11 @@ color: #000000;
   height: 27px;
   left: 20%;
   top: -8%;
-  font-style: normal;
   font-weight: bold;
   font-size: 15px;
   line-height: 20px;
   text-align: center;
   letter-spacing: 0.1em;
-  /* outline: 1px solid black; */
 }
 
 .resultHeading {
@@ -733,7 +687,6 @@ color: #000000;
   line-height: 19px;
   display: flex;
   align-items: center;
-  /* outline: 1px solid black; */
 }
 
 .percentHeading {
@@ -747,7 +700,6 @@ color: #000000;
   line-height: 19px;
   display: flex;
   align-items: center;
-  /* outline: 1px solid black; */
 }
 
 .resultsQuizCntr .questionsCntr {
@@ -1018,7 +970,6 @@ color: #000000;
   position: relative;
   height: 48px;
   top: -2.5%;
-  font-style: normal;
   font-weight: bold;
   font-size: 25px;
   line-height: 33px;
@@ -1026,7 +977,6 @@ color: #000000;
   letter-spacing: 0.2em;
   left: 8%;
   width: 290px;
-  /* outline: 1px dashed red; */
 }
 
 .resultQuizOpened {
@@ -1102,10 +1052,8 @@ color: #000000;
   height: 44px;
   left: 14px;
   top: 65px;
-  font-weight: normal;
   font-size: 12px;
   line-height: 16px;
-  /* outline: 1px solid red; */
 }
 
 .rightChoice {
@@ -1344,7 +1292,6 @@ color: #000000;
   
   .allResultsHeading {
     top: -10px;
-    /* left: 10%; */
   }
 
   .backBtn, .resultsQuizCntr .returnBtn, .returnBtn {
@@ -1722,7 +1669,6 @@ color: #000000;
 @media  only  screen and (min-width: 820px ) {
   
   .creatorNameInput {
-    /* top: 10.5%; */
     left: -17.2%;
   }
 }
@@ -1809,7 +1755,6 @@ color: #000000;
 
   .allResultsHeading { 
     left: -1%;
-    /* width: 400px;  */
   }
 
   .resultHeading, .percentHeading {
@@ -1885,7 +1830,6 @@ color: #000000;
     height: 58px;
     width: 385px;
     font-size: 15px;
-    /* outline: 1px solid black;  */
   }
 
   .rightChoice, .userChoice {
@@ -1989,7 +1933,7 @@ color: #000000;
   .previewQuestion {
     width: 35px;
     height: 35px;
-    min-width: 30px;
+    min-width: 35px;
     left: 5px;
     top: 3px;
     font-weight: 600;
@@ -2095,7 +2039,6 @@ color: #000000;
     height: 80px;
     top: 35px;
     font-size: 15px;
-    /* outline: 1px solid black; */
   }
 
   .indChoice, .iptIndChoice, .iptIndChoice.rightChoice {

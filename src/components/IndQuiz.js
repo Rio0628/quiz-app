@@ -1,14 +1,15 @@
 import React from 'react';
 
 const IndQuiz = (props) => {
-    // let quizSaved = false;
     
+    // Takes care of showing if each quiz is saved
     const checkQuizSaved = () => {
         const savedQuiz = props.savedQuizzes.filter( quiz => quiz.name === props.info.name);
         if (savedQuiz.length > 0 ) { return 'Saved'}
         else return 'Save'
     }
 
+    // Changes the background of each saveBtn quiz
     const changeBtnBackground = () => {
         const savedQuiz = props.savedQuizzes.filter( quiz => quiz.name === props.info.name);
         if (savedQuiz.length > 0)  return ' saved'

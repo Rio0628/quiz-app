@@ -4,6 +4,7 @@ import IndQuiz from './IndQuiz';
 const MainQuizView = (props) => {
   let quizzesCntr = [];
 
+  // Shows each indQuiz
   for (let i = 0; i < props.quizzes.length; i++) {
     quizzesCntr.push( <IndQuiz info={props.quizzes[i]} savedQuizzes={props.savedQuizzes} onClick={props.onClick} key={'IndQUiz ' + i}/> )
   }

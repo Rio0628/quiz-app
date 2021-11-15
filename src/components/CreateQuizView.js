@@ -3,6 +3,7 @@ import React from 'react';
 const CreateQuizView = (props) => {
     let previewQstCntr = [];
 
+    // Takes care of showing if the indQuestion component is showing
     const showIndQuestion = () => {
         if (props.addQuestion) { return 'active' }
         else return '';
@@ -14,6 +15,7 @@ const CreateQuizView = (props) => {
     const answerIsC = () => props.nQstChoice === 'C' ? 'rightChoice' : '';
     const answerIsD = () => props.nQstChoice === 'D' ? 'rightChoice' : '';
     
+    // Takes care of showing each preview Question
     for (let i = 0; i < props.newQuiz.questions.length; i++) {
         previewQstCntr.push( <div className='previewQuestion' onClick={props.onClick} key={'previewQuestion ' + i}>{i + 1}</div> );
     }

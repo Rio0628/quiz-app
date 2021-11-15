@@ -3,10 +3,10 @@ import IndQuestion from './IndQuestion';
 
 const CurrentQuizView = (props) => {
     let previewQstnsCntr = [];
-    // console.log(props.quiz)
     
+    // Takes care of showing each preview question 
     for (let i = 0; i < props.quiz.questions.length; i++) {
-        previewQstnsCntr.push( <div className='previewQuestion' id='currentQuizPrvQst' number={i + 1} onClick={props.onClick} key={'PreviewQuestion ' + i}>{i + 1}  </div> );
+        previewQstnsCntr.push( <div className='previewQuestion ' id='currentQuizPrvQst' number={i + 1} onClick={props.onClick} key={'PreviewQuestion ' + i}>{i + 1}  </div> );
     }
 
     return (

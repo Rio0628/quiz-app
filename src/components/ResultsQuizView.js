@@ -4,7 +4,7 @@ const ResultsQuizView = (props) => {
     let previewQstCntr = [], rightChoice, wrongChoice, noInputMsg;
 
     for (let i = 0; i < props.info.quiz.questions.length; i++) {
-        
+        // Displays each previewQuestion and shows if it is right or wrong 
         const checkIfRight = () => {
             try {
                 if (props.info.quiz.questions[i].answer === props.info.questions[i].userChoice) {
@@ -20,6 +20,7 @@ const ResultsQuizView = (props) => {
     }
 
     const showAnswers = () => {
+        // Shows the user the answer of each question within the indQuestionCntr 
         const question = props.info.quiz.questions.filter( qst => qst.question === props.currentQst.question);
         const userAnswer = props.info.questions.filter( qst => qst.question.question === props.currentQst.question);
 
@@ -39,7 +40,8 @@ const ResultsQuizView = (props) => {
         
     }
     showAnswers();
-
+    
+    // Changes the id of each indChoice according to the answers
     const choiceA = () => rightChoice === 'A' ? ' correct' : '' || wrongChoice === 'A' ? ' incorrect': '';
     const choiceB = () => rightChoice === 'B' ? ' correct' : '' || wrongChoice === 'B' ? ' incorrect': '';
     const choiceC = () => rightChoice === 'C' ? ' correct' : '' || wrongChoice === 'C' ? ' incorrect': '';

@@ -12,7 +12,6 @@ export default class App extends Component {
     super(props);
     this.state = {
       mainQuizViewOn: true,
-      quizResultsViewOn: false,
       newQuiz: {name: '', creator: '', questions: [] },
       currentQuiz: {},
       currentQuizzes: [],
@@ -49,8 +48,8 @@ export default class App extends Component {
   }
 
   componentDidMount () {
+    // Sets savedQuizzes state and current quizzes state 
     this.setState(prevState => ({ savedQuizzes: [...prevState.savedQuizzes, this.state.quizzes[1]] }));
-
     this.setState({ currentQuizzes: this.state.quizzes });
   }
   
@@ -58,9 +57,7 @@ export default class App extends Component {
     let newQuiz = this.state.newQuiz;
 
     const handleOnChange = (e) => {
-      console.log(e.target)
-      console.log(e.target.value)
-
+      // Get the inputs of the elements and set them on individual states 
       if (e.target.className === 'searchbar') {
         this.setState({ searchInput: e.target.value });
       }
@@ -86,24 +83,25 @@ export default class App extends Component {
     }
 
     const turnSidebarOn = () => {
+      // Handle showing and hiding the sidebar with the icon 
       if (this.state.isSidebarActive) { return 'active' }
       else return '';
     }
 
     const handleSidebar = () => {
+      // Handle changing the isSidebarActive state 
       this.setState({ isSidebarActive: !this.state.isSidebarActive });
     }
 
     const handleSearchBtn = () => {
+      // Filters the quizzes that have the same name input as the searchInput state 
       const quizzes = this.state.quizzes.filter(quiz => quiz.name.toLowerCase() === this.state.searchInput);
       this.setState({ currentQuizzes: quizzes });
   
     }
 
     const handleClick = async (e) => {
-      console.log(e.target);
-      // console.log(e.target.id)
-
+      // Change state to show the correct view
       if (e.target.className === 'searchQuiz' || e.target.className === 'returnBtn' || e.target.className === 'cancelQzBtn') { 
         this.setState({ isSidebarActive: false });
         this.setState({ createQuizViewOn: false });
@@ -113,10 +111,12 @@ export default class App extends Component {
         this.setState({ mainQuizViewOn: true }); 
       }
 
+      // Set the currentQuizzes state to the value of quizzes state
       if (e.target.className === 'searchQuiz') {
         this.setState({ currentQuizzes: this.state.quizzes });
       }
 
+      // Change state to show corrrec view
       if (e.target.className === 'createQuiz') {
         this.setState({ isSidebarActive: false });
         this.setState({ mainQuizViewOn: false });
@@ -128,6 +128,7 @@ export default class App extends Component {
         this.setState({ addQuestion: true });
       }
 
+      // Change state to show corrrec view
       if (e.target.className === 'cancelBtn') {
         this.setState({ addQuestion: false });
       }
@@ -136,10 +137,12 @@ export default class App extends Component {
         this.setState({ addQuestion: true });
       }
 
+      // Set right choice for the new question 
       if (e.target.className === 'iptIndChoice ')  {
         this.setState({ qstRightChoice: e.target.getAttribute('choice') });
       }
       
+      // Create the new question object and append it to the questions object
       if (e.target.className === 'addQstBtn') {
         let qstText, inputA, inputB, inputC, inputD;
         
@@ -154,14 +157,17 @@ export default class App extends Component {
         
         this.setState({ addQuestion: false });
         alert('Question Added');
-      }
+      } 
 
+      // Creates the new quiz object and appends it to the quizzes state and set the currentQuiz to the savedQuizzes 
       if (e.target.className === 'createQuizBtn') {
         newQuiz.name = this.state.nameQuizInput;
         newQuiz.creator = this.state.creatorQuizInput;
 
-        this.setState(prevState => ({ quizzes: [...prevState.quizzes, newQuiz] }));
+        await this.setState(prevState => ({ quizzes: [...prevState.quizzes, newQuiz] }));
         this.setState(prevState => ({ savedQuizzes: [...prevState.savedQuizzes, newQuiz] }));
+
+        this.setState({ currentQuizzes: this.state.quizzes });
 
         this.setState({ createQuizViewOn: false });
         this.setState({ mainQuizViewOn: true });
@@ -169,6 +175,7 @@ export default class App extends Component {
         console.log(newQuiz)
       }
 
+      // Change state to show corrrec view
       if (e.target.className === 'savedQuizzes') {
         this.setState({ isSidebarActive: false });
         this.setState({ mainQuizViewOn: false })
@@ -178,18 +185,21 @@ export default class App extends Component {
         this.setState({ savedQzsViewOn: true });
       }
 
+      // Appends the certain quiz to the saved quizzes state 
       if (e.target.className === 'saveBtn') {
         const quiz = this.state.quizzes.filter( quiz => quiz.name === e.target.getAttribute('name') );
       
         this.setState(prevState => ({ savedQuizzes: [...prevState.savedQuizzes, quiz[0]] }));
       }
 
+      // Removes the certain quiz from the saved quizzes state 
       if (e.target.className === 'removeBtn') {
         const savedQuizzes = this.state.savedQuizzes.filter( quiz => quiz.name !== e.target.getAttribute('name') );
 
         this.setState({ savedQuizzes: savedQuizzes });
       }
 
+      // Change state to show corrrec view
       if (e.target.className === 'resultQuizzes') {
 
         this.setState({ isSidebarActive: false });
@@ -201,16 +211,22 @@ export default class App extends Component {
 
       }
 
+      // Handles showing and disappearing the preview question view
       if (e.target.className === 'startBtn' || e.target.className === 'startQuizBtn' || e.target.className === 'cancelPrvBtn') {
         this.setState({ isPreviewOn: !this.state.isPreviewOn });
       }
+  
+      // Resets the choiceClicked state 
+      if (e.target.className === 'startQuizBtn') { this.setState({ choiceClicked: ''}); }
 
+      // Starts a certain quiz
       if (e.target.className === 'startBtn') {
         const quiz = this.state.quizzes.filter( quiz => quiz.name === e.target.getAttribute('name'))
 
         this.setState({ currentQuiz: quiz });
       }
-
+    
+      // Handles changing between different questions within the current quiz 
       if (e.target.id === 'currentQuizPrvQst') {
         const question = this.state.currentQuiz[0].questions[e.target.getAttribute('number') - 1];
         this.setState({ currentQstQuiz: question });
@@ -226,6 +242,7 @@ export default class App extends Component {
         } catch(err) { console.log ('No ChoiceCLicked for question') }
       }
 
+      // Handles changing between different questions within the current quiz 
       if (e.target.className === 'backBtn') {
 
         if (this.state.currentQstNmb > 1) {
@@ -242,6 +259,7 @@ export default class App extends Component {
         } catch(err) { console.log ('No ChoiceCLicked for question') }
       }
 
+      // Handles changing between different questions within the current quiz 
       if (e.target.className === 'nextBtn') {
         
         if (this.state.currentQuiz[0].questions.length !== this.state.currentQstNmb)  { 
@@ -263,6 +281,7 @@ export default class App extends Component {
         
       }
 
+      // Saves individual choice of a question
       if (e.target.className === 'indChoice ')  {
         this.setState({ choiceClicked: e.target.getAttribute('choice') });
 
@@ -291,6 +310,7 @@ export default class App extends Component {
         console.log(this.state.currentQuizAnswers[0].answer.length)
       }
 
+      // Changes the view to have the user complete the quiz
       if (e.target.className === 'startQuizBtn') {
         this.setState({ isSidebarActive: false });
         this.setState({ mainQuizViewOn: false })
@@ -304,11 +324,11 @@ export default class App extends Component {
         this.setState({ currentQstNmb: 1 });
       }
 
+      // Takes care of calculating results of current quiz and displaying them 
       if (e.target.className === 'submitBtn') {
         let rightAnswers = 0, questionRslt = [];
         let results = {quiz: this.state.currentQuiz[0], questions: [], fraction: '', percent: ''};
 
-        // Function to check results 
         try {
           for (let i = 0; i < this.state.currentQuiz[0].questions.length; i++) {
             if (this.state.currentQuiz[0].questions[i].answer === this.state.currentQuizAnswers[i].answer) { rightAnswers += 1; }
@@ -316,9 +336,7 @@ export default class App extends Component {
             if (this.state.currentQuiz[0].questions[i].question === this.state.currentQuizAnswers[i].question) {
               questionRslt = {question: this.state.currentQuiz[0].questions[i], userChoice: this.state.currentQuizAnswers[i].answer}
               results.questions.push(questionRslt);
-              // console.log(questionRslt)
             }
-            // console.log(this.state.currentQuizAnswers[i])
           }
         } catch(err) { console.log('All questions not answered') }
         
@@ -327,8 +345,6 @@ export default class App extends Component {
 
         results.fraction = fraction;
         results.percent = percent;
-        // console.log(this.state.currentQuizAnswers[0].answer)
-        console.log(results)
         
         await this.setState({ currentQuizResults: results });
         this.setState(prevState => ({ resultsQuizzes: [...prevState.resultsQuizzes, results]} ));
@@ -341,24 +357,25 @@ export default class App extends Component {
         this.setState({ currentRsltQstNmb: 0});
       }
 
+      // Changes between questions of the currentQuizResults
       if (e.target.className === 'previewQuestion') {
         const question = this.state.currentQuizResults.quiz.questions[e.target.getAttribute('number')];
         this.setState({ currentRsltQst: question });
         this.setState({ currentRsltQstNmb: e.target.getAttribute('number') + 1});
       }
-
+  
+      // Takes user back to main quiz view
       if (e.target.className === 'returnBtn') {
         this.setState({ isQuizOn: false });
         this.setState({ isResultOn: false });
       }
 
+      // Allows the user to view the results of other quizzes
       if (e.target.className === 'resultQuizClosed') {
         await this.setState({ currentQuizResults: this.state.resultsQuizzes[e.target.getAttribute('number')] });
 
         const question = await this.state.currentQuizResults.quiz.questions[0];
         await this.setState({ currentRsltQst: question });
-
-        // console.log(this.state.currentQuizResults.quiz)
 
         this.setState({ currentRsltQstNmb: 0});
         this.setState({ quizResultsViewOn: false });
@@ -366,10 +383,6 @@ export default class App extends Component {
        
       }
     }
-
-    
-    // console.log(this.state.resux
-
 
     return (
       <div className="container">

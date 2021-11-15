@@ -2,8 +2,7 @@ import React from 'react';
 
 const IndQuestion = (props) => {
     
-    // console.log(props.currentQst)
-
+    // Takes care of showing if the indChoice is clicked
     const choiceClkA = () => props.choiceClk === 'A' ? 'clicked' : '';
     const choiceClkB = () => props.choiceClk === 'B' ? 'clicked' : '';
     const choiceClkC = () => props.choiceClk === 'C' ? 'clicked' : '';
